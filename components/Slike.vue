@@ -57,14 +57,14 @@ return formatDate
     >
       <SwiperSlide style="height: auto;" v-for="blog in props.posts" class="bg-gray-300 p-0 rounded-md cursor-pointer mt-4  w-80  overflow-hidden  h-80">
         <NuxtLink  :to="`/blogpost/${blog.title}`" class="h-full">
-    <div class="w-full h-2/3 m-0 relative">
+    <div class="w-full m-0 relative">
       <img :src="blog.images[0]" class="w-full h-full">
       <div class="absolute top-0 flex items-center left-0 bg-orange-500 text-white text-xs font-normal px-2 py-1 rounded-br-md">
     Objavljen {{ formatedDate(blog.created_at) }}
   </div>
 
     </div>
-    <div class="px-3 p-6 flex flex-wrap h-1/3">
+    <div class="px-3 p-6 flex flex-wrap">
       <h2 class="text-lg text-black mt-0 mb-1 font-semibold ">{{blog.title}}</h2>
       <p class="w-full text-xs text-black font-normal">{{ blog.subtitle }}</p>
       
