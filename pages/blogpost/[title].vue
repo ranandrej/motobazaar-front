@@ -5,8 +5,8 @@
       <div class="container md:max-w-[80%] bg-gray-50 mx-auto md:p-8 p-4">
           <hr>
       <div class="flex h-11 w-full p-3">
-          <NuxtLink class="text-xs text-blue-700 flex items-center" to="/"><Icon name="ic:baseline-house" class="text-lg"></Icon> Početna/</NuxtLink>
-          <NuxtLink class=" text-xs text-blue-700 flex items-center" to="#">BlogPost/{{blogPost.title}}/</NuxtLink>
+          <NuxtLink class="text-xs text-blue-700 flex items-center" to="/"><i class="bi bi-house"></i> Početna/</NuxtLink>
+          <NuxtLink class=" text-xs text-blue-700 flex flex-wrap items-center" to="#">BlogPost/{{blogPost.title}}/</NuxtLink>
       </div>
       
       <hr>
@@ -16,7 +16,7 @@
           <h2 class="md:text-2xl text-lg text-gray-800 mb-4">{{ blogPost.subtitle }}</h2>
           <p class="text-md text-black">Autor:<a class="text-blue-400 cursor-pointer underline" :href="blogPost.autor_social">{{ blogPost.autor }}</a> </p>
           <p class="text-gray-600 text-lg">{{ formattedDate }}</p> 
-          <p class="text-sm text-gray-500 flex items-center"><Icon class="mr-1" name="material-symbols:visibility-rounded"></Icon>{{ blogPost.pregledi }} pregleda</p>
+          <p class="text-sm text-gray-500 flex items-center"><i class="bi bi-eye-fill mx-1 text-lg"></i>{{ blogPost.pregledi }} pregleda</p>
         </div>
         
         <!-- Blog Post Images -->
@@ -36,16 +36,19 @@
         <div class="mt-2 flex md:space-x-4 space-x-1">
       
           <a :href="whatsappShareUrl" target="_blank" class="flex items-center md:px-4 px-2 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600">
-            <span class="mr-2"><Icon name="ic:baseline-whatsapp"></Icon></span>
+            <span class="mr-2"><i class="bi bi-whatsapp"></i></span>
+
             <p>Whatsapp</p>
       
           </a>
           <a :href="viberShareUrl" target="_blank" class="flex items-center md:px-4 px-2 py-2 bg-purple-600 text-white rounded-lg shadow hover:bg-blue-700">
-            <span class="mr-2"><Icon name="mingcute:viber-messenger-fill"></Icon></span>
+            <span class="mr-2"><i class="bi bi-telephone-fill"></i></span>
+
             <p>Viber</p>
           </a>
           <a :href="facebookShareUrl" target="_blank" class="flex items-center md:px-4 px-2 py-2 bg-blue-800 text-white rounded-lg shadow hover:bg-blue-900">
-            <span class="mr-2"><Icon name="ic:baseline-facebook"></Icon></span>
+            <span class="mr-2"><i class="bi bi-facebook"></i></span>
+
             <p>Facebook</p>
           </a>
         </div>

@@ -25,7 +25,7 @@ console.log(useMainStore().currentUser.value)
             class="bg-transparent text-white cursor-pointer mx-1 flex items-center p-2"
             v-if="Object.keys(store.currentUser).length == 0"
           >
-            <Icon class="m-1 hover:text-yellow-500" size="18" name="ic:baseline-log-in" />
+          <i class="bi bi-box-arrow-in-right mx-1"></i>
             Prijava
           </NuxtLink>
           <button
@@ -33,21 +33,21 @@ console.log(useMainStore().currentUser.value)
             v-if="Object.keys(store.currentUser).length > 0"
             @click="useMainStore().isLogoutModalOpen=true"
           >
-            <Icon class="m-1 hover:text-yellow-500" size="18" name="ic:baseline-log-out" />
+          <i class="bi bi-box-arrow-left mx-1"></i>
             Odjava
           </button>
           <NuxtLink to="/register"
             class="bg-transparent text-white cursor-pointer mx-1 flex items-center p-2"
             v-if="Object.keys(store.currentUser).length == 0"
           >
-            <Icon class="m-1 hover:text-yellow-500" size="18" name="ic:sharp-person-add" />
+          <i class="bi bi-person-add mx-1"></i>
             Registracija
           </NuxtLink>
           <button
             class="bg-transparent text-white cursor-pointer mx-1 flex items-center p-2"
             v-if="Object.keys(store.currentUser).length > 0"
           >
-            <Icon class="m-1 hover:text-yellow-500" size="20" name="ic:sharp-person" />
+          <i class="bi bi-person mx-1"></i>
             {{ useMainStore().currentUser.name }}
           </button>
           <NuxtLink
@@ -69,7 +69,7 @@ console.log(useMainStore().currentUser.value)
             @click="useMainStore().isMenuOpen=true"
             class="text-yellow-500 font-medium text-2xl cursor-pointer"
           >
-            <Icon name="mdi:format-list-bulleted" />
+          <i class="bi bi-list"></i>
           </button>
         </div>
       </div>

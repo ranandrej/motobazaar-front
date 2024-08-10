@@ -94,7 +94,7 @@ const motociklUrl = useRequestURL().href
 <div class="w-full flex flex-wrap min-h-screen bg-gray-300 md:p-6 p-4">
     <hr>
     <div class="flex w-full p-3">
-        <NuxtLink class="text-blue-700 flex items-center" to="/"><Icon name="ic:baseline-house" class="text-lg"></Icon> Početna/</NuxtLink>
+        <NuxtLink class="text-blue-700 flex items-center" to="/"><i class="bi bi-house"></i> Početna/</NuxtLink>
         <NuxtLink class="text-blue-700" to="#">{{oglas.marka}} {{ oglas.model }}/</NuxtLink>
     </div>
     <hr>
@@ -106,9 +106,9 @@ const motociklUrl = useRequestURL().href
                 <img  v-for="path in oglas.slikaPaths" :src="path" alt="" @click="changeMainImage(path)" class="md:w-1/4 max-h-16 md:max-h-28 mx-2 rounded-md cursor-pointer">
             </div>
             <div class="flex w-full flex-wrap justify-start">
-                <button :disabled="isLikeDisabled" @click="dodajuOmiljene()" class="flex text-sm md:text-lg bg-transparent text-gray-500 items-center md:w-1/3 m-1"><Icon :class="isLikeDisabled ? 'text-red-500' : 'text-gray-500'" class="md:text-xl mx-1 text-xl" name="material-symbols:favorite"></Icon>{{ oglas.broj_omiljenih }} Dodaj u omiljene</button>
-                <button @click="showPrijavaModal(oglas)" class="flex bg-transparent text-sm md:text-lg text-gray-500 items-center md:w-1/3 m-1"><Icon class="md:text-xl text-xl" name="material-symbols:report-outline"></Icon> Prijavi oglas</button>
-                <p class="flex items-center w-full text-sm m-1 text-gray-500"><Icon class="text-md mt-1" name="material-symbols:visibility-outline"/> {{ oglas.pregledi }} pregleda</p>
+                <button :disabled="isLikeDisabled" @click="dodajuOmiljene()" class="flex text-sm md:text-lg bg-transparent text-gray-500 items-center md:w-1/3 m-1"><i :class="isLikeDisabled ? 'text-red-500' : 'text-gray-500'" class="bi bi-heart-fill md:text-xl mx-1 text-lg" ></i>{{ oglas.broj_omiljenih }} Dodaj u omiljene</button>
+                <button @click="showPrijavaModal(oglas)" class="flex bg-transparent text-sm md:text-lg text-gray-500 items-center md:w-1/3 m-1"><i class="bi bi-flag-fill text-lg mx-1"></i> Prijavi oglas</button>
+                <p class="flex items-center w-full text-sm m-1 text-gray-500"><i class="bi bi-eye-fill mx-1 text-lg"></i> {{ oglas.pregledi }} pregleda</p>
 
             </div>
 
@@ -159,7 +159,7 @@ const motociklUrl = useRequestURL().href
         <div class="p-4 md:w-1/2">
             <h2 class="text-2xl  font-bold">Cena:{{ oglas.cena}}€ <span class="text-sm w-full text-yellow-500">+dodatni troškovi kupovine</span></h2>
             <div class="flex flex-wrap w-full rounded-md drop-shadow border-2 border-yellow-500 p-4">
-                <h2 class="font-semibold w-full flex items-center mb-4 text-lg"><Icon class="m-1 hover:text-yellow-500" size="20" name="ic:sharp-person" /> Podaci o prodavcu</h2>
+                <h2 class="font-semibold w-full flex items-center mb-4 text-lg"><i class="bi bi-person-fill mx-1 "></i> Podaci o prodavcu</h2>
                 <hr class="text-black">
                 <p class="w-full mb-1">Ime:{{ prodavac.name }}</p>
                 <p class="w-full mb-1">E-mail:{{ prodavac.email }}</p>
@@ -168,23 +168,23 @@ const motociklUrl = useRequestURL().href
             </div>
             <div class="download-container w-full text-normal md:p-4 py-4">
             <a href="https://ejcrowqjfiedgnebyxmr.supabase.co/storage/v1/object/public/Motocikli/folder/kupoprodajni_ugovor.pdf?t=2024-07-26T14%3A34%3A10.433Z" target="_blank" download="" class="download-button p-2 md:w-[80%] hover:text-blue-500 flex items-center rounded-md border-2 border-gray-500">
-            <Icon class="mx-2 text-red-700 text-2xl" name="mdi:file-pdf-box-outline"/> Preuzmi PDF Kupoprodajni ugovor
+                <i class="bi bi-file-earmark-pdf-fill mx-1 text-red-700"></i> Preuzmi PDF Kupoprodajni ugovor
             </a>
 </div>
 <h4 class=" mt-3">Podeli ovaj oglas:</h4>
         <div class="mt-2 flex  md:space-x-2 space-x-1 w-full">
       
           <a :href="whatsappShareUrl" target="_blank" class="flex items-center md:px-4 px-2 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600">
-            <span class="mr-2"><Icon name="ic:baseline-whatsapp"></Icon></span>
+            <span class="mr-2"><i class="bi bi-whatsapp"></i></span>
             <p>Whatsapp</p>
       
           </a>
           <a :href="viberShareUrl" target="_blank" class="flex items-center md:px-4 px-2 py-2 bg-purple-600 text-white rounded-lg shadow hover:bg-blue-700">
-            <span class="mr-2"><Icon name="mingcute:viber-messenger-fill"></Icon></span>
+            <span class="mr-2"><i class="bi bi-telephone-fill"></i></span>
             <p>Viber</p>
           </a>
           <a :href="facebookShareUrl" target="_blank" class="flex items-center md:px-4 px-2 py-2 bg-blue-800 text-white rounded-lg shadow hover:bg-blue-900">
-            <span class="mr-2"><Icon name="ic:baseline-facebook"></Icon></span>
+            <span class="mr-2"><i class="bi bi-facebook"></i></span>
             <p>Facebook</p>
           </a>
         </div>

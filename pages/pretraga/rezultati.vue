@@ -162,7 +162,7 @@ watch(() => route.query, loadResults, { immediate: true })
                 </div>
                 </div>
                <div class="w-full flex justify-start mt-4">
-                <button class="bg-yellow-500 flex text-white items-center rounded-md p-2 mx-2" :disabled="cenaError || godisteError" @click="search()"><Icon name="ic:baseline-search"></Icon> Pretraži</button>
+                <button class="bg-yellow-500 flex text-white items-center rounded-md p-2 mx-2" :disabled="cenaError || godisteError" @click="search()"><i class="bi bi-search text-sm mx-1"></i> Pretraži</button>
                 <button class="bg-transparent  bg-gray-400 flex items-center rounded-md p-2 mx-2" @click="clear">Poništi pretragu</button>
                </div>
             </div>
@@ -171,7 +171,7 @@ watch(() => route.query, loadResults, { immediate: true })
     <div class="w-full flex flex-wrap  h-full bg-gray-300 md:p-8 p-2">
     <hr>
     <div class="flex h-11 w-full p-3">
-        <NuxtLink class="text-blue-700 flex items-center" to="/"><Icon name="ic:baseline-house" class="text-lg"></Icon> Početna/</NuxtLink>
+        <NuxtLink class="text-blue-700 flex items-center" to="/"><i class="bi bi-house mx-1 text-lg"></i> Početna/</NuxtLink>
         <NuxtLink class="text-blue-700 flex items-center" to="#">Pretraga/Rezultat/</NuxtLink>
     </div>
     
@@ -191,7 +191,7 @@ watch(() => route.query, loadResults, { immediate: true })
               </div>
               <p class="w-full md:text-normal text-black text-sm font-thin">{{ oglas.godiste }}.god.</p>
               <p class="w-full md:text-normal text-sm text-black font-thin">{{ oglas.kilometraza }} km</p>
-              <p class="w-full  font-thin flex items-center md:mt-2 text-gray-600"><Icon name="ic:baseline-location-on"/> {{ oglas.mesto }}</p>
+              <p class="w-full  font-thin flex items-center md:mt-2 text-gray-600"><i class="bi bi-geo-alt"></i> {{ oglas.mesto }}</p>
               <p v-if="oglas.registrovan" class="bg-green-500 mt-1 p-1 text-white text-sm">Registrovan</p>
               <p v-if="oglas.prvi_vlasnik" class="bg-orange-500 mt-1 p-1 text-white text-sm">Prvi vlasnik</p>
               <p class="w-full md:mt-5 mt-1 mb-2 text-black md:text-xl font-semibold">{{ oglas.cena.toLocaleString('de-DE')}}€</p>

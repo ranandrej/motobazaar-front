@@ -127,16 +127,16 @@ const changePassword=async()=>{
   <Loading v-if="loading"/>
   <SuccessAlert v-if="succesChange" :message="poruka"/>
         <div class="w-full flex-wrap flex p-4 justify-start bg-[url('~/assets/background3.jpg')] bg-center">
-          <h2 class="text-xl flex w-full px-6 py-2 mt-3 font-thin text-white">Informacije <button @click="useMainStore().isUpdateUserModalOpen=true" class="bg-transparent mx-5 text-sm cursor-pointer"><Icon name="ic:baseline-edit"/>Izmeni</button></h2>
+          <h2 class="text-xl flex w-full px-6 py-2 mt-3 font-thin text-white">Informacije <button @click="useMainStore().isUpdateUserModalOpen=true" class="bg-transparent mx-5 text-sm cursor-pointer"><i class="bi bi-pen"></i> Izmeni</button></h2>
 
           <div class="md:w-1/3 bg-slate-700 bg-opacity-30 border-2 border-yellow-500 p-6 text-white rounded-md m-3 flex flex-wrap">
             <h2 class="w-full text-xl font-semibold">Podaci o korisniku</h2>
-              <p class="w-full flex items-center  my-2"><Icon name="ic:outline-email" class="text-yellow-500 mr-1"/>E-mail: {{ user.email }}</p>
-              <p class="w-full flex items-center  my-2"><Icon name="ic:baseline-account-circle" class="text-yellow-500 mr-1"/>Ime: {{ user.name }}</p>
-              <p class="w-full flex items-center my-2"><Icon name="ic:baseline-phone-android" class="text-yellow-500 mr-1"/>Tel: {{ user.telefon }}</p>
+              <p class="w-full flex items-center  my-2"><i class="bi bi-envelope-at text-yellow-500 mr-1"></i>E-mail: {{ user.email }}</p>
+              <p class="w-full flex items-center  my-2"><i class="bi bi-person text-yellow-500 mr-1"></i>Ime: {{ user.name }}</p>
+              <p class="w-full flex items-center my-2"><i class="bi bi-phone text-yellow-500 mr-1"></i>Tel: {{ user.telefon }}</p>
           </div>
           <form @submit.prevent="changePassword()" class="promena border-2 border-yellow-500 bg-opacity-50 p-4 m-4 text-white bg-slate-700 rounded-md shadow-lg flex flex-wrap">
-            <h2 class="w-full font-semibold text-xl flex items-center mx-2"><Icon class="mr-1" name="mdi:key-variant"></Icon>Promena lozinke</h2>
+            <h2 class="w-full font-semibold text-xl flex items-center mx-2"><i class="bi bi-key mx-1"></i>Promena lozinke</h2>
             <label class="text-red-500 font-semibold m-3" v-if="errorMessage!=''">{{ errorMessage }}</label>
             <input  type="password" v-model="staraSifra" required placeholder="Unesite staru lozinku" class="text-black p-1 rounded-md m-2 w-full">
             <input type="password" v-model="novaSifra" required placeholder="Unesite novu lozinku" class=" text-black p-1 rounded-md m-2 w-full">
@@ -161,14 +161,14 @@ const changePassword=async()=>{
               <div class="w-full flex justify-between text-black md:text-xl">
                 <p>{{ oglas.marka }} {{oglas.model}}</p>
                 <div class="flex justify-start text-sm text-gray-600">
-                 <button class="mx-2 bg-transparent cursor-pointer" @click="showUpdateModal(oglas)"><Icon name="ic:baseline-edit"/> Izmeni</button>
-                 <button class="mx-1 bg-transparent cursor-pointer" @click="showDeleteModal(oglas)"><Icon name="ic:baseline-delete"/> Obrisi</button>
+                 <button class="mx-2 bg-transparent cursor-pointer" @click="showUpdateModal(oglas)"><i class="bi bi-pen-fill"></i> Izmeni</button>
+                 <button class="mx-1 bg-transparent cursor-pointer" @click="showDeleteModal(oglas)"><i class="bi bi-trash3"></i> Obrisi</button>
                 </div>
               </div>
               <p class="w-full text-black font-thin">{{ oglas.godiste }}.god.</p>
               <p class="w-full text-black font-thin">{{ oglas.kilometraza }} km</p>
-              <p class="w-full flex items-center text-black font-thin"><Icon class="text-md mr-1 mt-1" name="material-symbols:visibility-outline"/> {{ oglas.pregledi }} pregleda</p>
-              <p class="w-full  font-thin flex items-center mt-2 text-gray-600"><Icon name="ic:baseline-location-on"/> {{ oglas.mesto }}</p>
+              <p class="w-full flex items-center text-black font-thin"><i class="bi bi-eye-fill mr-1"></i> {{ oglas.pregledi }} pregleda</p>
+              <p class="w-full  font-thin flex items-center mt-2 text-gray-600"><i class="bi bi-geo-alt"></i> {{ oglas.mesto }}</p>
               
               <p class="w-full md:mt-8 mt-2 text-black font-bold">{{ oglas.cena.toLocaleString('de-DE')}}€</p>
 
@@ -188,7 +188,7 @@ const changePassword=async()=>{
 
           </div>
           <div class="flex flex-wrap justify-start md:p-5 p-2 my-6" v-if="omiljeniOglasi.length>0">
-          <h2 class="text-xl w-full font-thin text-black">Oglasi koje ste oznacili kao "omiljeni"</h2>
+          <h2 class="text-xl w-full font-thin text-black"><i class="bi bi-heart text-md"></i> Oglasi koje ste označili kao "omiljeni" </h2>
           <div  v-for="oglas in omiljeniOglasi" :key="oglas.id" class="md:w-[80%] my-4 flex rounded-md bg-gray-200 justify-start max-h-56 md:max-h-64">
             <div class="slika h-full m-0 md:w-1/3 w-[45%]">
               <img :src="oglas.slikaPaths[0]" class="h-full w-full">
@@ -198,12 +198,12 @@ const changePassword=async()=>{
               <div class="w-full flex justify-between text-black md:text-xl">
                 <NuxtLink class="hover:text-blue-400" :to="`/oglas/motocikli/${oglas.id}`">{{ oglas.marka }} {{oglas.model}}</NuxtLink>
                 <div class="flex justify-start text-sm text-gray-600">
-                 <button class="mx-1 bg-transparent cursor-pointer" @click="showRemoveModal(oglas)"><Icon name="ic:baseline-delete"/> Ukloni</button>
+                 <button class="mx-1 bg-transparent cursor-pointer" @click="showRemoveModal(oglas)"><i class="bi bi-trash3"></i> Ukloni</button>
                 </div>
               </div>
               <p class="w-full text-black font-thin">{{ oglas.godiste }}.god.</p>
               <p class="w-full text-black font-thin">{{ oglas.kilometraza }} km</p>
-              <p class="w-full  font-thin flex items-center mt-2 text-gray-600"><Icon name="ic:baseline-location-on"/> {{ oglas.mesto }}</p>
+              <p class="w-full  font-thin flex items-center mt-2 text-gray-600"><i class="bi bi-geo-alt"></i> {{ oglas.mesto }}</p>
               
               <p class="w-full md:mt-8 mt-2 text-black font-bold">{{ oglas.cena.toLocaleString('de-DE')}}€</p>
 

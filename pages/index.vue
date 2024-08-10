@@ -211,7 +211,7 @@ const sendMail=async()=>{
                 </div>
                 </div>
                <div class="w-full flex justify-start mt-4">
-                <button class="bg-yellow-500 flex text-white items-center rounded-md p-2 mx-2" :disabled="cenaError || godisteError" @click="search()"><Icon name="ic:baseline-search"></Icon> Pretraži</button>
+                <button class="bg-yellow-500 flex text-white items-center rounded-md p-2 mx-2" :disabled="cenaError || godisteError" @click="search()"><i class="bi bi-search text-sm mx-1"></i> Pretraži</button>
                 <button class="bg-transparent  bg-gray-400 flex items-center rounded-md p-2 mx-2" @click="clear">Poništi pretragu</button>
                </div>
             </div>
@@ -230,7 +230,7 @@ const sendMail=async()=>{
               <div class="px-3 flex flex-wrap h-1/3">
                 <h2 class="text-normal text-black font-semibold w-full">{{ oglas.marka }} {{ oglas.model }}</h2>
                 <p class="w-full text-sm text-gray-400 font-bold">{{ oglas.godiste }}.god.</p>
-                <p class="w-full text-sm text-gray-600"><Icon name="ic:baseline-location-on"/> {{ oglas.mesto }}</p>
+                <p class="w-full text-sm text-gray-600"><i class="bi bi-geo-alt-fill"></i> {{ oglas.mesto }}</p>
                 <div class="px-1">
                 <p class="text-black text-sm font-semibold">{{ oglas.cena.toLocaleString('de-DE')}}€</p>
               </div>
@@ -249,14 +249,14 @@ const sendMail=async()=>{
       <div class="w-full m-0 h-2/3 relative">
         <img :src="oglas.slikaPaths[0]" class="w-full h-full">
         <div class="absolute top-0 left-0 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-br-md">
-      {{ oglas.pregledi }} pregleda
+          <i class="bi bi-eye-fill mx-1"></i>{{ oglas.pregledi }} pregleda
     </div>
 
       </div>
       <div class="px-3 flex flex-wrap h-1/3">
         <h2 class="text-normal text-black font-semibold w-full">{{ oglas.marka }} {{ oglas.model }}</h2>
         <p class="w-full text-sm text-gray-400 font-bold">{{ oglas.godiste }}.god.</p>
-        <p class="w-full text-sm text-gray-600"><Icon name="ic:baseline-location-on"/> {{ oglas.mesto }}</p>
+        <p class="w-full text-sm text-gray-600"><i class="bi bi-geo-alt-fill"></i> {{ oglas.mesto }}</p>
         <div class="px-1">
         <p class="text-black text-sm font-semibold">{{ oglas.cena.toLocaleString('de-DE')}}€</p>
       </div>
@@ -277,14 +277,14 @@ const sendMail=async()=>{
       <div class="w-full m-0 h-2/3 relative">
         <img :src="oglas.slikaPaths[0]" class="w-full h-full">
         <div class="absolute top-0 flex items-center left-0 bg-orange-500 text-white text-xs font-normal px-2 py-1 rounded-br-md">
-      <Icon class="mx-1" name="material-symbols:favorite"></Icon> {{ oglas.broj_omiljenih }} korisnika označilo kao omiljeni
+          <i class="bi bi-heart-fill mx-1"></i> {{ oglas.broj_omiljenih }} korisnika označilo kao omiljeni
     </div>
 
       </div>
       <div class="px-3 flex flex-wrap h-1/3">
         <h2 class="text-normal text-black mb-0 font-semibold w-full">{{ oglas.marka }} {{ oglas.model }}</h2>
         <p class="w-full text-xs text-gray-400 font-semibold">{{ oglas.godiste }}.god.</p>
-        <p class="w-full text-sm text-gray-600"><Icon name="ic:baseline-location-on"/> {{ oglas.mesto }}</p>
+        <p class="w-full text-sm text-gray-600"><i class="bi bi-geo-alt-fill"></i> {{ oglas.mesto }}</p>
         <p v-if="oglas.registrovan" class="text-sm bg-green-500 text-white px-2">Registrovan</p>
         <div class="px-1 w-full">
         <p class="text-black w-full text-sm font-semibold">{{ oglas.cena.toLocaleString('de-DE')}}€</p>
@@ -306,12 +306,12 @@ const sendMail=async()=>{
     <div id="kontakt"  class="w-full p-8 flex justify-center bg-[url('~/assets/bacground1.jpg')] bg-cover">
         <form id="contact" @submit.prevent="sendMail()">
             <div class="rounded-md p-6 flex flex-wrap border-2 border-yellow-500 bg-slate-700 bg-opacity-20">
-                <h1 class="w-full flex items-center text-white text-xl font-semibold"><Icon class="mt-2 text-2xl" name="material-symbols:contract-edit-outline-rounded"/> Kontaktirajte nas</h1>
+                <h1 class="w-full flex items-center text-white text-xl font-semibold"><i class="bi bi-person-lines-fill mx-1"></i> Kontaktirajte nas</h1>
                 <p class="w-full font-semibold text-md text-yellow-500" v-if="mailSuccess">Uspešno poslat e-mail!</p>
                 <p class="w-full font-semibold text-md text-red-500" v-if="mailError">{{ mailError }}</p>
                 <input type="email" v-model="email" maxlength="50" class="md:w-1/2 p-1 rounded-md my-3" placeholder="Vaš E-mail"/>
                 <textarea maxlength="200" rows="4" v-model="poruka" class="p-3 rounded-md w-full my-2" placeholder="Poruka"></textarea>
-                <button type="submit" class="bg-yellow-500 flex items-center justify-center rounded-md cursor-pointer text-white w-1/3 p-2 my-3">Pošalji <Icon class="mx-1 my-1" name="material-symbols:send"/></button>
+                <button type="submit" class="bg-yellow-500 flex items-center justify-center rounded-md cursor-pointer text-white w-1/3 p-2 my-3">Pošalji <i class="bi bi-send mx-1"></i></button>
             </div>
         </form>
         
