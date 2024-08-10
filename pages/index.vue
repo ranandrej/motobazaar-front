@@ -309,7 +309,7 @@ const sendMail=async()=>{
                 <h1 class="w-full flex items-center text-white text-xl font-semibold"><Icon class="mt-2 text-2xl" name="material-symbols:contract-edit-outline-rounded"/> Kontaktirajte nas</h1>
                 <p class="w-full font-semibold text-md text-yellow-500" v-if="mailSuccess">Uspešno poslat e-mail!</p>
                 <p class="w-full font-semibold text-md text-red-500" v-if="mailError">{{ mailError }}</p>
-                <input type="email" v-model="email" maxlength="50" class="w-1/2 p-1 rounded-md my-3" placeholder="Vaš E-mail"/>
+                <input type="email" v-model="email" maxlength="50" class="md:w-1/2 p-1 rounded-md my-3" placeholder="Vaš E-mail"/>
                 <textarea maxlength="200" rows="4" v-model="poruka" class="p-3 rounded-md w-full my-2" placeholder="Poruka"></textarea>
                 <button type="submit" class="bg-yellow-500 flex items-center justify-center rounded-md cursor-pointer text-white w-1/3 p-2 my-3">Pošalji <Icon class="mx-1 my-1" name="material-symbols:send"/></button>
             </div>
