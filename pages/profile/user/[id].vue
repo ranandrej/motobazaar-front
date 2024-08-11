@@ -45,7 +45,6 @@ onMounted(async()=>{
       },
     })
     loading.value=false
-    console.log(oglasiData)
     oglasi.value=oglasiData
 
     }catch(error){
@@ -129,7 +128,7 @@ const changePassword=async()=>{
         <div class="w-full flex-wrap flex p-4 justify-start bg-[url('~/assets/background3.jpg')] bg-center">
           <h2 class="text-xl flex w-full px-6 py-2 mt-3 font-thin text-white">Informacije <button @click="useMainStore().isUpdateUserModalOpen=true" class="bg-transparent mx-5 text-sm cursor-pointer"><i class="bi bi-pen"></i> Izmeni</button></h2>
 
-          <div class="md:w-1/3 bg-slate-700 bg-opacity-30 border-2 border-yellow-500 p-6 text-white rounded-md m-3 flex flex-wrap">
+          <div class="md:w-1/3 bg-slate-700 bg-opacity-50 border-2 border-yellow-500 p-6 text-white rounded-md m-3 flex flex-wrap">
             <h2 class="w-full text-xl font-semibold">Podaci o korisniku</h2>
               <p class="w-full flex items-center  my-2"><i class="bi bi-envelope-at text-yellow-500 mr-1"></i>E-mail: {{ user.email }}</p>
               <p class="w-full flex items-center  my-2"><i class="bi bi-person text-yellow-500 mr-1"></i>Ime: {{ user.name }}</p>
@@ -144,19 +143,18 @@ const changePassword=async()=>{
 
           </form>
         </div>
-    <div class="w-full p-8 bg-gray-300">
+    <div class="w-full md:p-8  bg-gray-300">
       <DeleteModal v-if="useMainStore().isDeleteModalOpen"/>
       <RemoveModal v-if="useMainStore().isRemoveModalOpen"/>
       <UpdateModal v-if="useMainStore().isUpdateModalOpen"/>
       <UpdateUserModal v-if="useMainStore().isUpdateUserModalOpen"/>
-       
-        <div class="flex flex-wrap justify-start md:p-5 p-2 my-6" v-if="oglasi.length>0">
-          <h2 class="text-xl w-full font-thin text-black">Vaši Oglasi</h2>
-          <div v-for="oglas in oglasi" :key="oglas.id" class="md:w-[80%] my-4 flex rounded-md bg-gray-200 justify-start max-h-56 md:max-h-64">
-            <div class="slika h-full m-0 md:w-1/3 w-[45%]">
+        <div class="flex flex-wrap justify-start md:p-5 p-0 px-2 my-6" v-if="oglasi.length>0">
+          <h2 class="text-xl w-full font-thin text-black m-2">Vaši Oglasi</h2>
+          <div v-for="oglas in oglasi" :key="oglas.id"  class="md:w-[80%] my-4 flex rounded-md bg-gray-200 justify-start max-h-56 md:max-h-64">
+            <NuxtLink :to="`/oglas/motocikli/${oglas.id}`" class="slika h-full m-0 md:w-1/3 w-[60%]">
               <img :src="oglas.slikaPaths[0]" class="h-full w-full">
 
-            </div>
+            </NuxtLink>
             <div class="w-2/3 md:p-4 p-2 h-1/2 flex flex-wrap justify-start">
               <div class="w-full flex justify-between text-black md:text-xl">
                 <p>{{ oglas.marka }} {{oglas.model}}</p>
@@ -187,10 +185,10 @@ const changePassword=async()=>{
           </NuxtLink>
 
           </div>
-          <div class="flex flex-wrap justify-start md:p-5 p-2 my-6" v-if="omiljeniOglasi.length>0">
-          <h2 class="text-xl w-full font-thin text-black"><i class="bi bi-heart text-md"></i> Oglasi koje ste označili kao "omiljeni" </h2>
+          <div class="flex flex-wrap justify-start md:p-5 p-0 my-6" v-if="omiljeniOglasi.length>0">
+          <h2 class="text-xl mx-2 w-full font-thin text-black"><i class="bi bi-heart text-md"></i> Oglasi koje ste označili kao "omiljeni" </h2>
           <div  v-for="oglas in omiljeniOglasi" :key="oglas.id" class="md:w-[80%] my-4 flex rounded-md bg-gray-200 justify-start max-h-56 md:max-h-64">
-            <div class="slika h-full m-0 md:w-1/3 w-[45%]">
+            <div class="slika h-full m-0 md:w-1/3 w-[50%]">
               <img :src="oglas.slikaPaths[0]" class="h-full w-full">
 
             </div>

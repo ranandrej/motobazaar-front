@@ -38,7 +38,7 @@ onMounted(async()=>{
     })
   
     loading.value=false
-    console.log(data)
+    
     oglasi.value=data
     loading.value=true
     const mostViewed = await $fetch(`${config.public.apiUrl}/api/najgledaniji/`, {
@@ -48,7 +48,7 @@ onMounted(async()=>{
     })
   
     loading.value=false
-    console.log(data)
+    
     najgledaniji.value=mostViewed
     loading.value=true
     const mostLiked = await $fetch(`${config.public.apiUrl}/api/najomiljeniji/`, {
@@ -58,7 +58,7 @@ onMounted(async()=>{
     })
   
     loading.value=false
-    console.log(data)
+    
     najomiljeniji.value=mostLiked
     const marks = await $fetch(`${config.public.apiUrl}/api/getMarke/`, {
       method: 'GET',
@@ -66,7 +66,6 @@ onMounted(async()=>{
      
     })
     marke.value=marks
-    console.log(marke.value)
 
     const count = await $fetch(`${config.public.apiUrl}/api/getMotocikliCount/`, {
       method: 'GET',

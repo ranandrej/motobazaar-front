@@ -11,7 +11,6 @@ const loading=ref(false)
 const config = useRuntimeConfig()
 const resetSifraSuccess=ref(false)
 const showReset=ref(false)
-console.log(useMainStore().currentUser)
 async function logIn() {
   errorMessage.value = ""
   loading.value=true  // Resetuje poruku o grešci
@@ -28,7 +27,7 @@ async function logIn() {
     localStorage.setItem('access_token', data.access_token)
     localStorage.setItem('user', JSON.stringify(data.user))
     
-    console.log(data)
+    
     loading.value=false
     router.push('/')
      // Preusmerava na početnu stranicu
@@ -80,7 +79,7 @@ const resetSifra=async()=>{
     <h2 class="text-white text-lg m-2 w-full">Ulogujte se</h2>
     <p v-if="errorMessage" class="text-sm w-full text-red-500">{{ errorMessage }}</p>
     <input class="m-2 w-full rounded-md p-1 text-black" type="email" v-model="email" placeholder="E-mail"/>
-    <input class="m-2 w-full rounded-md p-1 text-black" type="password" v-model="password" placeholder="Password"/>
+    <input class="m-2 w-full rounded-md p-1 text-black" type="password" v-model="password" placeholder="Lozinka"/>
     <button class="m-2 bg-transparent border-2 border-yellow-500  p-2 cursor-pointer hover:bg-yellow-500 text-white" @click="logIn()">Prijava</button>
     
     <p class="text-sm w-full text-white">Nemate nalog?<NuxtLink class="text-yellow-500" to="/register">Registrujte se</NuxtLink></p>

@@ -16,7 +16,7 @@ console.log("Menu state:"+isMenuOpen)
                 <NuxtLink class="bg-transparent w-full text-white ml-2 my-2 cursor-pointer flex items-center text-lg" to="/#kontakt"> Kontakt</NuxtLink>
 
 
-                <NuxtLink v-if="Object.keys(store.currentUser).length == 0" to="/login" class="bg-transparent w-full text-white my-2 cursor-pointer flex items-center text-lg "><Icon class="m-1 hover:text-yellow-500" size="18" name="ic:baseline-log-in"/> Prijava</NuxtLink>
+                <NuxtLink v-if="Object.keys(store.currentUser).length == 0" to="/login" class="bg-transparent w-full text-white my-2 cursor-pointer flex items-center text-lg ">     <i class="bi bi-box-arrow-right mx-1"></i> Prijava</NuxtLink>
                 <button
             class="bg-transparent text-white cursor-pointer mx-1 flex items-center"
             v-if="Object.keys(store.currentUser).length > 0"
@@ -25,7 +25,7 @@ console.log("Menu state:"+isMenuOpen)
           <i class="bi bi-box-arrow-left m-1"></i>
             Odjava
           </button>
-                <NuxtLink to="/register" v-if="Object.keys(store.currentUser).length == 0" class="bg-transparent w-full text-white my-2 cursor-pointer flex items-center text-lg "><Icon class="m-1 hover:text-yellow-500" size="18" name="ic:sharp-person-add"/> Registracija</NuxtLink>
+                <NuxtLink to="/register" v-if="Object.keys(store.currentUser).length == 0" class="bg-transparent w-full text-white my-2 cursor-pointer flex items-center text-lg "><i class="bi bi-person-add mx-1"></i> Registracija</NuxtLink>
                 <NuxtLink
             v-if="Object.keys(store.currentUser).length > 0"
             :to="`/profile/user/${useMainStore().currentUser.id}`"

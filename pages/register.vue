@@ -55,12 +55,12 @@ async function signUp() {
 <SuccessAlert v-if="registerSuccess" :message="`E-mail potvrde poslat na ${email}!`"/>
 <section class="md:p-10 py-6 w-full  bg-[url('~/assets/bacground1.jpg')] bg-cover">
   <form @submit.prevent="signUp()" class="mx-auto w-[80%] md:w-1/3 p-8 bg-slate-800 flex flex-wrap justify-start">
-    <h2 class="text-white text-lg m-2 w-full">Unesite podatke</h2>
+    <h2 class="text-white text-lg m-2 w-full">Kreirajte nalog</h2>
     <p class="text-yellow-500 text-xs">*sva polja obavezna!</p>
     <p v-if="errorMessage" class="text-sm w-full text-red-500">{{ errorMessage }}</p>
     <input class="m-2 w-full rounded-md p-1 text-black" required type="text" maxlength="20" v-model="ime" placeholder="Vaše ime"/>
     <input class="m-2 w-full rounded-md p-1 text-black" required type="email" v-model="email" placeholder="E-mail"/>
-    <input class="m-2 w-full rounded-md p-1 text-black" required type="password" v-model="password" placeholder="Password"/>
+    <input class="m-2 w-full rounded-md p-1 text-black" required type="password" v-model="password" placeholder="Lozinka"/>
     <input class="m-2 w-full rounded-md p-1 text-black" required type="text" maxlength="20" v-model="telefon" placeholder="Telefon"/>
     <button class="m-2 bg-transparent border-2 border-yellow-500 p-2 cursor-pointer hover:bg-yellow-500 text-white" type="submit">Registracija</button>
     

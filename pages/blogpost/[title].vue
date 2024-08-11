@@ -31,7 +31,7 @@
       <img class="w-full" v-if="blogPost.images?.[2]" :src="blogPost.images[2]" alt="Image 3">
         </div>
         <!-- Share Buttons -->
-         <NuxtLink class="text-blue-400 flex mt-3 max-w-[80%] items-center" to="/"> <Icon class="mr-1" name="material-symbols:arrow-back"></Icon> Nazad na početnu</NuxtLink>
+         <NuxtLink class="text-blue-400 flex mt-3 max-w-[80%] items-center" to="/"> <i class="bi bi-arrow-left"></i> Nazad na početnu</NuxtLink>
         <h4 class="w-full mt-3">Podeli ovu priču na:</h4>
         <div class="mt-2 flex md:space-x-4 space-x-1">
       

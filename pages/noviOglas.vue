@@ -9,104 +9,107 @@
         <div>
           <label class="block text-sm font-medium text-gray-700">Marka</label>
          <select required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm" id="brand" name="marka" placeholder="Sve marke" tabindex="-1">
-          <option value=""></option><option value="access-motor">Access Motor</option>
-          <option value="aeon">Aeon</option><option value="alligator">Alligator</option>
-          <option value="apollo">Apollo</option><option value="aprilia">Aprilia</option>
-          <option value="arctic-cat">Arctic Cat</option><option value="baotian">Baotian</option>
-          <option value="barossa">Barossa</option><option value="bashan">Bashan</option>
-          <option value="benelli">Benelli</option><option value="beta">Beta</option>
-          <option value="bmw">BMW</option><option value="bombardier">Bombardier</option>
-          <option value="buell">Buell</option><option value="cagiva">Cagiva</option>
-          <option value="can-am">Can-am</option><option value="ccm">CCM</option>
-          <option value="cfmoto">CFMOTO</option><option value="corvus">Corvus</option>
-          <option value="cpi">CPI</option><option value="daelim">Daelim</option>
-          <option value="daytona-motors">Daytona Motors</option>
-          <option value="derbi">Derbi</option>
-          <option value="dinli">Dinli</option>
-          <option value="ducati">Ducati</option>
-          <option value="drkopp">Dürkopp</option>
-          <option value="ellite-moto">Ellite Moto</option>
-          <option value="factory-bike">Factory bike</option>
-          <option value="falcon">Falcon</option>
-          <option value="feline">Feline</option>
-          <option value="gas-gas">Gas Gas</option>
-          <option value="geely">Geely</option>
-          <option value="genergia">Genergia</option>
-          <option value="gilera">Gilera</option>
-          <option value="goes">Goes</option>
-          <option value="harley-davidson">Harley Davidson</option>
-          <option value="hercules">Hercules</option>
-          <option value="hisun">Hisun</option>
-          <option value="honda">Honda</option>
-          <option value="huaihai">Huaihai</option>
-          <option value="husaberg">Husaberg</option>
-          <option value="husqvarna">Husqvarna</option>
-          <option value="hyosung">Hyosung</option>
-          <option value="indian">Indian</option>
-          <option value="jawa">Jawa</option>
-          <option value="jiajue">Jiajue</option>
-          <option value="jialing">Jialing</option>
-          <option value="jinlun">Jinlun</option>
-          <option value="jmstar">JMSTAR</option>
-          <option value="jonway">Jonway</option>
-          <option value="k-moto">K-MOTO</option>
-          <option value="kawasaki">Kawasaki</option>
-          <option value="kayo">Kayo</option>
-          <option value="keeway">Keeway</option>
-          <option value="kinroad">Kinroad</option>
-          <option value="kove">KOVE</option>
-          <option value="ktm">KTM</option>
-          <option value="kxd">KXD</option>
-          <option value="kymco">Kymco</option>
-          <option value="lambretta">Lambretta</option>
-          <option value="lifan">Lifan</option>
-          <option value="linhai">Linhai</option>
-          <option value="loncin">Loncin</option>
-          <option value="longbo">Longbo</option>
-          <option value="longjia">Longjia</option>
-          <option value="malaguti">Malaguti</option>
-          <option value="mbk">MBK</option>
-          <option value="mondial">Mondial</option>
-          <option value="motogrini">Motogrini</option>
-          <option value="moto-guzzi">Moto Guzzi</option>
-          <option value="motomania">MotoMania</option>
-          <option value="moto-morini">Moto Morini</option>
-          <option value="moto-zeta">Moto Zeta</option>
-          <option value="mv-agusta">MV Agusta</option>
-          <option value="mz">MZ</option>
-          <option value="nitro">Nitro</option>
-          <option value="nitro-motors">Nitro motors</option>
-          <option value="nsu">NSU</option>
-          <option value="odes-atv">Odes ATV</option>
-          <option value="orion">Orion</option>
-          <option value="peda">Peda</option>
-          <option value="peugeot">Peugeot</option>
-          <option value="piaggio">Piaggio</option>
-          <option value="polaris">Polaris</option>
-          <option value="puch">Puch</option>
-          <option value="qingqi">Qingqi</option>
-          <option value="qjmotor">QJMOTOR</option>
-          <option value="qooder">Qooder</option>
-          <option value="quick">Quick</option>
-          <option value="rieju">Rieju</option>
-          <option value="royal-enfield">Royal Enfield</option>
-          <option value="russkaja-mekhanika">Russkaja Mekhanika</option>
-          <option value="sachs">Sachs</option>
-          <option value="segway">Segway</option>
-          <option value="sherco">Sherco</option>
-          <option value="shineray">Shineray</option>
-          <option value="sky">Sky</option>
-          <option value="smc">SMC</option>
-          <option value="sonik">Sonik</option>
-          <option value="sprint">Sprint</option>
-          <option value="stels">Stels</option>
-          <option value="sunra">Sunra</option>
-          <option value="sunra-e-bike">Sunra E-Bike</option>
-          <option value="super-soco">Super SOCO</option>
-          <option value="suzuki">Suzuki</option><option value="sym">Sym</option>
-          <option value="tao-motor">Tao Motor</option><option value="tgb">TGB</option>
-          <option value="tomos">Tomos</option><option value="trio">Trio</option><option value="triumph">Triumph</option><option value="tvs">TVS</option><option value="vespa">Vespa</option><option value="victory">Victory</option><option value="voge">Voge</option><option value="xinling">Xinling</option><option value="xtreme-motors">Xtreme Motors</option><option value="yadea">Yadea</option><option value="yamaha">Yamaha</option><option value="yamasaki">Yamasaki</option><option value="yiben">Yiben</option><option value="zongshen">Zongshen</option><option value="zontes">Zontes</option><option value="ostalo">Ostalo</option></select>
-        </div>
+         <option value="" >Marka</option>
+          <option value="Access Motor">Access Motor</option>
+                    <option value="Aeon">Aeon</option><option value="Alligator">Alligator</option>
+                    <option value="Apollo">Apollo</option><option value="Aprilia">Aprilia</option>
+                    <option value="Arctic Cat">Arctic Cat</option><option value="Baotian">Baotian</option>
+                    <option value="Barossa">Barossa</option><option value="Bashan">Bashan</option>
+                    <option value="Benelli">Benelli</option><option value="Beta">Beta</option>
+                    <option value="BMW">BMW</option><option value="Bombardier">Bombardier</option>
+                    <option value="Buell">Buell</option><option value="Cagiva">Cagiva</option>
+                    <option value="Can-am">Can-am</option><option value="CCM">CCM</option>
+                    <option value="CFMOTO">CFMOTO</option><option value="Corvus">Corvus</option>
+                    <option value="CPI">CPI</option><option value="Daelim">Daelim</option>
+                    <option value="Daytona Motors">Daytona Motors</option>
+                    <option value="Derbi">Derbi</option>
+                    <option value="Dinli">Dinli</option>
+                    <option value="Ducati">Ducati</option>
+                    <option value="Dürkopp">Dürkopp</option>
+                    <option value="Ellite Moto">Ellite Moto</option>
+                    <option value="Factory bike">Factory bike</option>
+                    <option value="Falcon">Falcon</option>
+                    <option value="Feline">Feline</option>
+                    <option value="Gas Gas">Gas Gas</option>
+                    <option value="Geely">Geely</option>
+                    <option value="Genergia">Genergia</option>
+                    <option value="Gilera">Gilera</option>
+                    <option value="Goes">Goes</option>
+                    <option value="Harley Davidson">Harley Davidson</option>
+                    <option value="Hercules">Hercules</option>
+                    <option value="Hisun">Hisun</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Huaihai">Huaihai</option>
+                    <option value="Husaberg">Husaberg</option>
+                    <option value="Husqvarna">Husqvarna</option>
+                    <option value="Hyosung">Hyosung</option>
+                    <option value="Indian">Indian</option>
+                    <option value="Jawa">Jawa</option>
+                    <option value="Jiajue">Jiajue</option>
+                    <option value="Jialing">Jialing</option>
+                    <option value="Jinlun">Jinlun</option>
+                    <option value="JMSTAR">JMSTAR</option>
+                    <option value="Jonway">Jonway</option>
+                    <option value="K-MOTO">K-MOTO</option>
+                    <option value="Kawasaki">Kawasaki</option>
+                    <option value="Kayo">Kayo</option>
+                    <option value="Keeway">Keeway</option>
+                    <option value="Kinroad">Kinroad</option>
+                    <option value="KOVE">KOVE</option>
+                    <option value="KTM">KTM</option>
+                    <option value="KXD">KXD</option>
+                    <option value="Kymco">Kymco</option>
+                    <option value="Lambretta">Lambretta</option>
+                    <option value="Lifan">Lifan</option>
+                    <option value="Linhai">Linhai</option>
+                    <option value="Loncin">Loncin</option>
+                    <option value="Longbo">Longbo</option>
+                    <option value="Longjia">Longjia</option>
+                    <option value="Malaguti">Malaguti</option>
+                    <option value="MBK">MBK</option>
+                    <option value="Mondial">Mondial</option>
+                    <option value="Motogrini">Motogrini</option>
+                    <option value="Moto Guzzi">Moto Guzzi</option>
+                    <option value="MotoMania">MotoMania</option>
+                    <option value="Moto Morini">Moto Morini</option>
+                    <option value="Moto Zeta">Moto Zeta</option>
+                    <option value="MV Agusta">MV Agusta</option>
+                    <option value="MZ">MZ</option>
+                    <option value="Nitro">Nitro</option>
+                    <option value="Nitro motors">Nitro motors</option>
+                    <option value="NSU">NSU</option>
+                    <option value="Odes ATV">Odes ATV</option>
+                    <option value="Orion">Orion</option>
+                    <option value="Peda">Peda</option>
+                    <option value="Peugeot">Peugeot</option>
+                    <option value="Piaggio">Piaggio</option>
+                    <option value="Polaris">Polaris</option>
+                    <option value="Puch">Puch</option>
+                    <option value="Qingqi">Qingqi</option>
+                    <option value="QJMOTOR">QJMOTOR</option>
+                    <option value="Qooder">Qooder</option>
+                    <option value="Quick">Quick</option>
+                    <option value="Rieju">Rieju</option>
+                    <option value="Royal Enfield">Royal Enfield</option>
+                    <option value="Russkaja Mekhanika">Russkaja Mekhanika</option>
+                    <option value="Sachs">Sachs</option>
+                    <option value="Segway">Segway</option>
+                    <option value="Sherco">Sherco</option>
+                    <option value="Shineray">Shineray</option>
+                    <option value="Sky">Sky</option>
+                    <option value="SMC">SMC</option>
+                    <option value="Sonik">Sonik</option>
+                    <option value="Sprint">Sprint</option>
+                    <option value="Stels">Stels</option>
+                    <option value="Sunra">Sunra</option>
+                    <option value="Sunra E-Bike">Sunra E-Bike</option>
+                    <option value="Super SOCO">Super SOCO</option>
+                    <option value="Suzuki">Suzuki</option><option value="Sym">Sym</option>
+                    <option value="Tao Motor">Tao Motor</option><option value="TGB">TGB</option>
+                    <option value="Tomos">Tomos</option><option value="Trio">Trio</option><option value="Triumph">Triumph</option><option value="TVS">TVS</option><option value="Vespa">Vespa</option><option value="Victory">Victory</option><option value="Voge">Voge</option><option value="Xinling">Xinling</option><option value="Xtreme Motors">Xtreme Motors</option><option value="Yadea">Yadea</option><option value="Yamaha">Yamaha</option><option value="Yamasaki">Yamasaki</option><option value="Yiben">Yiben</option><option value="Zongshen">Zongshen</option><option value="Zontes">Zontes</option><option value="Ostalo">Ostalo</option></select>
+                
+          
+          </div>
         <!-- Model -->
         <div>
           <label class="block text-sm font-medium text-gray-700">Model</label>

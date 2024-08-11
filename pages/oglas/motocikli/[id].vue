@@ -30,9 +30,8 @@ onMounted(async()=>{
      }
      
     })
-    console.log(views)
     loading.value=false
-    console.log(data)
+    
     oglas.value=data
     const user = await $fetch(`${config.public.apiUrl}/api/getUser/?id=${data.user}`, {
       method: 'GET',
@@ -91,15 +90,15 @@ const motociklUrl = useRequestURL().href
 <Loading v-if="loading"/>
 <SuccessAlert v-if="omiljeniSuccess" :message="poruka"/>
 <PrijavaOglasaModal v-if="useMainStore().isPrijavaModalOpen"/>
-<div class="w-full flex flex-wrap min-h-screen bg-gray-300 md:p-6 p-4">
+<div class="w-full flex flex-wrap min-h-screen bg-gray-300 md:p-6 p-1">
     <hr>
     <div class="flex w-full p-3">
-        <NuxtLink class="text-blue-700 flex items-center" to="/"><i class="bi bi-house"></i> Početna/</NuxtLink>
-        <NuxtLink class="text-blue-700" to="#">{{oglas.marka}} {{ oglas.model }}/</NuxtLink>
+        <NuxtLink class="text-blue-700 flex items-center" to="/"><i class="bi bi-house"></i> Početna/Oglasi/</NuxtLink>
+        <NuxtLink class="text-blue-700 1" to="#">{{oglas.marka}} {{ oglas.model }}/</NuxtLink>
     </div>
     <hr>
-    <div class="flex flex-wrap w-full md:w-[90%] md:p-6 p-4 mx-auto">
-        <h1 class="w-full mb-2 text-3xl font-semibold">{{ oglas.marka }} {{ oglas.model }} <span class="ml-1 font-bold text-sm text-gray-600">{{ oglas.godiste }}.god.</span></h1>
+    <div class="flex flex-wrap w-full md:w-[90%] md:p-6 p-0 mx-auto">
+        <h1 class="w-full mb-2 px-2 text-3xl font-semibold">{{ oglas.marka }} {{ oglas.model }} <span class="ml-1 font-bold text-sm text-gray-600">{{ oglas.godiste }}.god.</span></h1>
         <div class="md:w-1/2 w-full">
             <a :href="mainImagePath"><img :src="mainImagePath" alt="" class="w-full cursor-pointer max-h-96 mr-5"></a>
             <div class="flex p-2 w-full justify-start">

@@ -65,6 +65,7 @@ console.log(useMainStore().currentUser.value)
           </NuxtLink>
         </div>
         <div class="sm:hidden flex p-2 m-0 justify-start items-center">
+          <p class="text-xs mx-1 text-white" v-if="Object.keys(store.currentUser).length > 0">Zdravo,{{useMainStore().currentUser.name }}</p>
           <button
             @click="useMainStore().isMenuOpen=true"
             class="text-yellow-500 font-medium text-2xl cursor-pointer"
@@ -93,7 +94,7 @@ console.log(useMainStore().currentUser.value)
             
             <h4
               class="self-center md:text-2xl text-xl whitespace-nowrap text-yellow-500 font-thin"
-              ><span class="text-white">MOTO</span>|BAAZAR</h4
+              ><span class="text-white">MOTO</span>|BAZAAR</h4
             >
           </a>
           <ul
@@ -121,7 +122,7 @@ console.log(useMainStore().currentUser.value)
         <span
           class="block text-sm text-gray-500 sm:text-center dark:text-gray-400"
           >© 2024
-          <a href="/" class="hover:underline">Moto Baazar™</a
+          <a href="/" class="hover:underline">Moto Bazaar™</a
           >. All Rights Reserved.</span
         >
       </div>

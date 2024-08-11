@@ -49,9 +49,9 @@ async function izmena(user) {
     <!-- Overlay -->
     <div class="fixed top-0 left-0 p-6 w-full h-full z-40 bg-gray-900 bg-opacity-50 flex justify-center items-center">
       <!-- Modal -->
-      <div  class="md:w-1/3 rounded-md bg-gray-300 p-8 flex border-2 border-yellow-500 flex-wrap">
+      <div  class="md:w-1/3 rounded-md bg-white p-8 flex border-2 border-yellow-500 flex-wrap">
         <h1 class="text-xl text-gray-700 w-full text-center">Izmena podataka</h1>
-
+        <hr>
         <div class="w-full">
         <label class="block text-sm font-medium text-gray-700">Ime</label>
         <input v-model="useMainStore().currentUser.name"
@@ -75,8 +75,9 @@ async function izmena(user) {
 
      
      <div class="w-full flex justify-start mt-4">
+      <button class="text-white inline-flex items-center bg-yellow-500  focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center" @click="izmena(useMainStore().currentUser)">Sačuvaj</button>
+
         <button class="p-2 rounded-md bg-transparent text-gray-700 cursor-pointer border-2 border-yellow-500 mx-2" @click="useMainStore().isUpdateUserModalOpen=false">Otkaži</button>
-        <button class="p-2 rounded-md  cursor-pointer  bg-yellow-500" @click="izmena(useMainStore().currentUser)">Sačuvaj</button>
 
      </div>
     </div>
