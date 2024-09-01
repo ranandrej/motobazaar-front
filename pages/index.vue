@@ -170,7 +170,7 @@ const sendMail=async()=>{
 
 <template>
     <Loading v-if="loading"/>
-    <div class="w-full mb-5 flex justify-center p-6 bg-[url('~/assets/bacground1.jpg')] bg-cover">
+    <div class="w-full mb-5 flex justify-center md:p-6 py-4 bg-[url('~/assets/bacground1.jpg')] bg-cover">
         <div class="md:w-[60%] w-full p-6 rounded-md bg-white bg-opacity-50 border-2 border-yellow-500 flex flex-wrap">
                 <h2 class="w-full flex items-center text-xl font-semibold m-2">Pretraga  <span class="text-sm font-bold">- {{ oglasiCount }} oglasa</span></h2>
                 <div class="w-full flex flex-wrap justify-start">
@@ -216,10 +216,15 @@ const sendMail=async()=>{
             </div>
     </div>
 
+    <div class="p-2 mb-2">
+      <MotoriSlide :oglasi="najgledaniji"/>
+    </div>
     <div class="p-10 w-full bg-gray-100 min-h-full flex flex-wrap justify-center">
 
        
         <h1 class="w-full text-2xl font-semibold">Poslednje dodati oglasi </h1>
+        
+
         <div class="flex flex-wrap mx-auto md:justify-start justify-center md:p-6">
             <NuxtLink v-for="oglas in oglasi" :key="oglas.id" :to="`/oglas/motocikli/${oglas.id}`" class="bg-white rounded-md m-3 cursor-pointer md:w-60 w-72 overflow-hidden md:h-72 h-80 shadow-md">
               <div class="w-full m-0 h-2/3">
@@ -239,7 +244,7 @@ const sendMail=async()=>{
 
         </div>
     </div>
-    <div class="p-10 w-full bg-gray-50 min-h-full flex flex-wrap ">
+    <div class="p-10 w-full bg-gray-50 min-h-full flex flex-wrap justify-center">
 
        
 <h1 class="w-full text-2xl font-semibold">Najgledaniji oglasi </h1>
