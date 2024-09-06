@@ -168,49 +168,49 @@ watch(() => route.query, loadResults, { immediate: true })
             </div>
     </div>
 
-    <div class="w-full flex flex-wrap  h-full  md:p-8 p-1">
-    <hr>
-    <div class="flex h-11 w-full p-3">
-        <NuxtLink class="text-blue-700 flex items-center" to="/"><i class="bi bi-house mx-1 text-lg"></i> Početna/</NuxtLink>
-        <NuxtLink class="text-blue-700 flex items-center" to="#">Pretraga/Rezultat/</NuxtLink>
-    </div>
-    
-    <hr>
-    <div class="flex flex-wrap w-full justify-start md:p-3 p-0 my-2" v-if="oglasi.length>0">
-          
-        <h2 class="text-xl w-full font-semibold text-black">Rezultati pretrage</h2>
-          <NuxtLink v-for="oglas in oglasi" :key="oglas.id" :to="`/oglas/motocikli/${oglas.id}`" class="md:w-2/3 cursor-pointer md:mx-2  my-4 flex rounded-md bg-gray-100 justify-start md:h-52 h-40">
-            <div class="slika h-full m-0 md:w-1/3 w-[60%]">
-              <img :src="oglas.slikaPaths[0]" class="h-full w-full">
-
-            </div>
-            <div class="w-2/3 md:p-4 px-3 py-1 h-1/2 flex flex-wrap justify-start">
-              <div class="w-full flex justify-between text-black font-semibold md:text-xl">
-                <p>{{ oglas.marka }} {{oglas.model}}</p>
-                
+    <div class="relative w-full flex flex-wrap h-full md:p-8 p-1  bg-[url('~/assets/rezultatibg.jpg')] bg-cover" >
+      <div class="absolute inset-0 bg-white opacity-20"></div>
+      <hr>
+    <div class="relative z-10">
+      <div class="flex h-11 w-full p-3">
+          <NuxtLink class="text-blue-700 flex items-center" to="/"><i class="bi bi-house mx-1 text-lg"></i> Početna/</NuxtLink>
+          <NuxtLink class="text-blue-700 flex items-center" to="#">Pretraga/Rezultat/</NuxtLink>
+      </div>
+      
+      <hr>
+      <div class="flex flex-wrap w-full justify-start md:p-3 p-0 my-2 " v-if="oglasi.length>0">
+      
+          <h2 class="text-xl w-full font-semibold text-black">Rezultati pretrage</h2>
+            <NuxtLink v-for="oglas in oglasi" :key="oglas.id" :to="`/oglas/motocikli/${oglas.id}`" class="md:w-2/3 cursor-pointer md:mx-2  my-4 flex rounded-md bg-gray-100 justify-start md:h-52 h-48">
+              <div class="slika h-full m-0 md:w-1/3 w-[70%]">
+                <img :src="oglas.slikaPaths[0]" class="h-full w-full">
               </div>
-              <p class="w-full md:text-normal text-black text-sm font-thin">{{ oglas.godiste }}.god.</p>
-              <p class="w-full md:text-normal text-sm text-black font-thin">{{ oglas.kilometraza }} km</p>
-              <p class="w-full  font-thin flex items-center md:mt-2 text-gray-600"><i class="bi bi-geo-alt"></i> {{ oglas.mesto }}</p>
-              <p v-if="oglas.registrovan" class="bg-green-500 mt-1 p-1 text-white text-sm">Registrovan</p>
-              <p v-if="oglas.prvi_vlasnik" class="bg-orange-500 mt-1 p-1 text-white text-sm">Prvi vlasnik</p>
-              <p class="w-full md:mt-5 mt-1 mb-2 text-black md:text-xl font-semibold">{{ oglas.cena.toLocaleString('de-DE')}}€</p>
-
+              <div class="w-2/3 md:p-4 px-3 py-1 h-1/2 flex flex-wrap justify-start">
+                <div class="w-full flex justify-between text-black font-semibold md:text-xl text-lg">
+                  <p>{{ oglas.marka }} {{oglas.model}}</p>
+      
+                </div>
+                <p class="w-full md:text-normal text-black  font-thin">{{ oglas.godiste }}.god.</p>
+                <p class="w-full md:text-normal text-sm text-black font-thin">{{ oglas.kilometraza }} km</p>
+                <p class="w-full  font-thin flex items-center md:mt-2 text-gray-600"><i class="bi bi-geo-alt"></i> {{ oglas.mesto }}</p>
+                <p v-if="oglas.registrovan" class="bg-green-500 mt-1 p-1 text-white text-sm">Registrovan</p>
+                <p v-if="oglas.prvi_vlasnik" class="bg-orange-500 mt-1 p-1 text-white text-sm">Prvi vlasnik</p>
+                <p class="w-full md:mt-5 mt-1 mb-2 text-black md:text-xl text-lg font-semibold">{{ oglas.cena.toLocaleString('de-DE')}}€ <span class="text-yellow-500 text-xs">+dodatni troškovi kupovine</span></p>
+              </div>
+            </NuxtLink>
+      
             </div>
-
-          </NuxtLink>
-         
-          </div>
-          <div class="flex flex-wrap mx-auto justify-center my-4">
-      <button
-        v-for="page in strane"
-        :key="page"
-        @click="fetchPage(page)"
-        :class="['px-4 py-2 mx-1 rounded cursor-pointer', { 'bg-yellow-500 text-white': currentPage === page, 'bg-gray-300': currentPage !== page }]"
-      >
-        {{ page }}
-      </button>
-      <h3 class="text-md font-normal w-full text-center">Strana {{ currentPage }} od {{ strane }}</h3>
-    </div>
+            <div class="flex flex-wrap mx-auto justify-center my-4">
+        <button
+          v-for="page in strane"
+          :key="page"
+          @click="fetchPage(page)"
+          :class="['px-4 py-2 mx-1 rounded cursor-pointer', { 'bg-yellow-500 text-white': currentPage === page, 'bg-gray-300': currentPage !== page }]"
+        >
+          {{ page }}
+        </button>
+        <h3 class="text-md font-normal w-full text-center">Strana {{ currentPage }} od {{ strane }}</h3>
+      </div>
+      </div>
     </div>
 </template>
