@@ -7,6 +7,7 @@ const email = ref("")
 const password = ref("")
 const ime=ref("")
 const telefon=ref("")
+const acceptTerms=ref(false)
 const errorMessage = ref("")
 const router = useRouter()
 const config = useRuntimeConfig()
@@ -15,6 +16,9 @@ const registerSuccess=ref(false)
 console.log(useMainStore().currentUser)
 async function signUp() {
   errorMessage.value = "" 
+  if(acceptTerms.value){
+
+  
   loading.value=true // Resetuje poruku o grešci
   try {
     const data = await $fetch(`${config.public.apiUrl}/api/auth/signup`, {
@@ -47,6 +51,9 @@ async function signUp() {
       loading.value=false
     }
   }
+}else{
+  errorMessage.value = "Morate prihvatiti uslove korišćenja"
+}
 }
 </script>
 
@@ -62,6 +69,10 @@ async function signUp() {
     <input class="m-2 w-full rounded-md p-1 text-black" required type="email" v-model="email" placeholder="E-mail"/>
     <input class="m-2 w-full rounded-md p-1 text-black" required type="password" v-model="password" placeholder="Lozinka"/>
     <input class="m-2 w-full rounded-md p-1 text-black" required type="text" maxlength="20" v-model="telefon" placeholder="Telefon"/>
+    <div class="flex items-center mb-4">
+        <input type="checkbox" id="terms" v-model="acceptTerms" class="mr-2"/>
+        <label for="terms" class="text-white">Prihvatam <NuxtLink to="/uslovi-koriscenja" class="text-blue-400 underline cursor-pointer">uslove korišćenja</NuxtLink></label>
+      </div>
     <button class="m-2 bg-transparent border-2 border-yellow-500 p-2 cursor-pointer hover:bg-yellow-500 text-white" type="submit">Registracija</button>
     
     <p class="text-sm w-full text-white">Već imate nalog?<NuxtLink class="text-yellow-500" to="/login">Ulogujte se</NuxtLink></p>
