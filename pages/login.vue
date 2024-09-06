@@ -36,6 +36,7 @@ async function logIn() {
 
 if (error.data) { // Check if error has data
   errorMessage.value = error.data.error || 'Greška pri prijavi.'
+  showReset.value=true
 } else {
   errorMessage.value = 'Greška pri prijavi.'
 }
