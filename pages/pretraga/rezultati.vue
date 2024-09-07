@@ -122,7 +122,7 @@ watch(() => route.query, loadResults, { immediate: true })
 
 <template>
     <Loading v-if="loading"/>
-    <div class="w-full mb-5 flex justify-center md:p-6 py-4 bg-[url('~/assets/bacground1.jpg')] bg-cover">
+    <div class="w-full mb-0 flex justify-center md:p-6 py-4 bg-[url('~/assets/bacground1.jpg')] bg-cover">
         <div class="md:w-[60%] w-full p-6 rounded-md bg-white bg-opacity-50 border-2 border-yellow-500 flex flex-wrap">
                 <h2 class="w-full flex items-center text-xl font-semibold m-2">Pretraga</h2>
                 <div class="w-full flex flex-wrap justify-start">
@@ -168,20 +168,20 @@ watch(() => route.query, loadResults, { immediate: true })
             </div>
     </div>
 
-    <div class="relative w-full flex flex-wrap h-full md:p-8 p-1  bg-[url('~/assets/rezultatibg.jpg')] bg-cover" >
-      <div class="absolute inset-0 bg-white opacity-20"></div>
+    <div class="relative w-full flex flex-wrap h-full md:p-8 p-1 mt-0  bg-[url('~/assets/rezultatibg.jpg')] bg-cover bg-repeat" >
+      <div class="absolute inset-0 bg-black opacity-30"></div>
       <hr>
     <div class="relative z-10">
       <div class="flex h-11 w-full p-3">
-          <NuxtLink class="text-blue-700 flex items-center" to="/"><i class="bi bi-house mx-1 text-lg"></i> Početna/</NuxtLink>
-          <NuxtLink class="text-blue-700 flex items-center" to="#">Pretraga/Rezultat/</NuxtLink>
+          <NuxtLink class="text-yellow-500 flex items-center" to="/"><i class="bi bi-house mx-1 text-lg"></i> Početna / </NuxtLink>
+          <NuxtLink class="text-white flex items-center ml-1" to="#"> Pretraga / Rezultat/</NuxtLink>
       </div>
       
       <hr>
       <div class="flex flex-wrap w-full justify-start md:p-3 p-0 my-2 " v-if="oglasi.length>0">
       
-          <h2 class="text-xl w-full font-semibold text-black">Rezultati pretrage</h2>
-            <NuxtLink v-for="oglas in oglasi" :key="oglas.id" :to="`/oglas/motocikli/${oglas.id}`" class="md:w-2/3 cursor-pointer md:mx-2  my-4 flex rounded-md bg-gray-100 justify-start md:h-52 h-48">
+          <h2 class="text-xl mx-3 w-full font-light text-black">Rezultati pretrage - <span class="text-xs font-semibold">pronađeno {{ oglasi.length }} oglasa</span></h2>
+            <NuxtLink v-for="oglas in oglasi" :key="oglas.id" :to="`/oglas/motocikli/${oglas.id}`" class="md:w-2/3 cursor-pointer md:mx-2  my-4 flex rounded-md bg-gray-50 justify-start md:h-56 h-46">
               <div class="slika h-full m-0 md:w-1/3 w-[70%]">
                 <img :src="oglas.slikaPaths[0]" class="h-full w-full">
               </div>
@@ -209,7 +209,7 @@ watch(() => route.query, loadResults, { immediate: true })
         >
           {{ page }}
         </button>
-        <h3 class="text-md font-normal w-full text-center">Strana {{ currentPage }} od {{ strane }}</h3>
+        <h3 class="text-md font-normal w-full text-white text-center">Strana {{ currentPage }} od {{ strane }}</h3>
       </div>
       </div>
     </div>
