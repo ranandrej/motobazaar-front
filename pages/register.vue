@@ -73,7 +73,7 @@ async function signUp() {
         <input type="checkbox" id="terms" v-model="acceptTerms" class="mr-2"/>
         <label for="terms" class="text-white">Prihvatam <NuxtLink to="/uslovi-koriscenja" class="text-blue-400 underline cursor-pointer">uslove korišćenja</NuxtLink></label>
       </div>
-    <button class="m-2 bg-transparent border-2 border-yellow-500 p-2 cursor-pointer hover:bg-yellow-500 text-white" type="submit">Registracija</button>
+    <button class="m-2 bg-transparent border-2 w-full border-yellow-500 p-2 cursor-pointer hover:bg-yellow-500 text-white" type="submit">Registracija</button>
     
     <p class="text-sm w-full text-white">Već imate nalog?<NuxtLink class="text-yellow-500" to="/login">Ulogujte se</NuxtLink></p>
   </form>
