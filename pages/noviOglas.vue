@@ -160,7 +160,7 @@
         </div>
         <!-- Cena -->
         <div>
-          <label class="block text-sm font-medium text-gray-700">Cena</label>
+          <label class="block text-sm font-medium text-gray-700">Cena (€)</label>
           <input
             type="number"
             name="cena"
