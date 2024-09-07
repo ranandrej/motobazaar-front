@@ -59,9 +59,10 @@ return formatDate
         <NuxtLink :to="`/oglas/motocikli/${oglas.id}`" class="h-full">
               <div class="w-full m-0 h-2/3">
                 <img :src="oglas.slikaPaths[0]" class="w-full h-full">
+               
 
               </div>
-              <div class="px-3 flex flex-wrap h-1/3">
+              <div class="px-3 flex flex-wrap h-1/3 bg-gradient-to-r from-yellow-50 to-yellow-200" >
                 <h2 class="text-normal text-black font-semibold w-full">{{ oglas.marka }} {{ oglas.model }}</h2>
                 <p class="w-full text-sm text-gray-400 font-bold">{{ oglas.godiste }}.god.</p>
                 <p class="w-full text-sm text-gray-600"><i class="bi bi-geo-alt-fill"></i> {{ oglas.mesto }}</p>

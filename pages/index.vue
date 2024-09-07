@@ -216,34 +216,11 @@ const sendMail=async()=>{
             </div>
     </div>
 
-    <div class="p-2 mb-2">
-      <MotoriSlide :oglasi="najgledaniji"/>
+    <div class="p-2 mb-2 bg-gray-100">
+      <h1 class="text-2xl my-2 mx-3 font-semibold">Poslednje dodati oglasi </h1>
+      <MotoriSlide :oglasi="oglasi"/>
     </div>
-    <div class="p-10 w-full bg-gray-100 min-h-full flex flex-wrap justify-center">
-
-       
-        <h1 class="w-full text-2xl font-semibold">Poslednje dodati oglasi </h1>
-        
-
-        <div class="flex flex-wrap mx-auto md:justify-start justify-center md:p-6">
-            <NuxtLink v-for="oglas in oglasi" :key="oglas.id" :to="`/oglas/motocikli/${oglas.id}`" class="bg-white rounded-md m-3 cursor-pointer md:w-60 w-72 overflow-hidden md:h-72 h-80 shadow-md">
-              <div class="w-full m-0 h-2/3">
-                <img :src="oglas.slikaPaths[0]" class="w-full h-full">
-
-              </div>
-              <div class="px-3 flex flex-wrap h-1/3">
-                <h2 class="text-normal text-black font-semibold w-full">{{ oglas.marka }} {{ oglas.model }}</h2>
-                <p class="w-full text-sm text-gray-400 font-bold">{{ oglas.godiste }}.god.</p>
-                <p class="w-full text-sm text-gray-600"><i class="bi bi-geo-alt-fill"></i> {{ oglas.mesto }}</p>
-                <div class="px-1">
-                <p class="text-black text-sm font-semibold">{{ oglas.cena.toLocaleString('de-DE')}}€</p>
-              </div>
-              </div>
-              
-            </NuxtLink>
-
-        </div>
-    </div>
+    
     <div class="p-10 w-full bg-gray-50 min-h-full flex flex-wrap justify-center">
 
        
