@@ -2,8 +2,13 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: false },
-  modules: ["@nuxtjs/tailwindcss", "@nuxt/icon","@pinia/nuxt",'nuxt-swiper'],
-  
+  modules: ["@nuxtjs/tailwindcss", "@nuxt/icon","@pinia/nuxt",'nuxt-swiper','@nuxtjs/sitemap'],
+  sitemap: {
+    hostname: 'https://motobazaar-front.onrender.com',
+    routes: [
+      // List your dynamic routes or let Nuxt auto-discover them
+    ],
+  },
    
   
   runtimeConfig: {
