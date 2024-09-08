@@ -140,7 +140,7 @@
             type="number"
             name="kubikaza"
             min="1"
-            max="1500"
+            max="2000"
             step="1"
             class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
             required
@@ -235,7 +235,7 @@
         <!-- Slika -->
         <div>
           <label class="block text-sm font-medium text-gray-700">Slike (Max. 4 slike)</label>
-          <input
+          <input @input="handleFileInput"
             type="file"
             name="images"
             accept="image/*"
@@ -243,6 +243,7 @@
             class="mt-2 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-yellow-500 file:text-white hover:file:bg-yellow-600"
           />
           <label for="" class="w-full text-sm font-semibold text-yellow-500" v-if="error">{{ error }}</label>
+          <NuxtLink v-if="showLogin" class="mt-1 cursor-pointer text-blue-400 underline" to="/login">Prijavite se</NuxtLink>
         </div>
         <!-- Submit Button -->
         <div class="flex justify-end">
@@ -260,7 +261,7 @@
 
 <script setup>
 import { useRuntimeConfig } from '#app'
-import { ref } from 'vue'
+import { ref,onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const successPost=ref(false)
@@ -270,31 +271,54 @@ const config = useRuntimeConfig()
 const error=ref("")
 const loading = ref(false)
 const router=useRouter()
+const showLogin=ref(false)
 const handleSubmit = async (event) => {
-  event.preventDefault()
   
+  event.preventDefault()
+
+  error.value=""
   const form = event.target
   const formData = new FormData(form)
   const user = JSON.parse(localStorage.getItem('user'))
-  const userId = user.id
+  let userId=""
+  if(!user){
+    showLogin.value=true
+    error.value=`Prijavite se ili kreirajte nalog da bi postavili oglas!`
+    return
+  }
+  if(user.id){
+    userId= user.id
+    showLogin.value=false
+
+  }else{
+    error.value="Invalid user"
+    return
+  }
    
   // Add user ID to FormData
   
     formData.append('user', userId)
     formData.append('slikaPaths',[])
     formData.append('pregledi',0)
-    const files = formData.getAll('images')  // Get all selected files
+    const fileInput = document.querySelector('input[name="images"]');
+    const files= fileInput.files
+ 
 
   // Check if the number of files exceeds 4
-  if (files.length > 4) {
-    error.value = 'Možete postaviti maksimalno 4 slike.'
-    return
-  }
+  console.log(files.length)
+  if (files.length==0) {
+  error.value = 'Morate postaviti barem jednu sliku.';
+  return
+} else if (files.length > 4) {
+  error.value = 'Možete postaviti maksimalno 4 slike.';
+  return
+}
   const isFirstOwner = formData.get('prvi_vlasnik') ? true : false
   const isRegistered = formData.get('registrovan') ? true : false
   formData.set('prvi_vlasnik', isFirstOwner)
   formData.set('registrovan', isRegistered)
   loading.value=true
+
   try {
     const response = await $fetch(`${config.public.apiUrl}/api/postMotocikl/`, {
       method: 'POST',
@@ -318,10 +342,14 @@ const handleSubmit = async (event) => {
       window.location.href="/login"
     }else{
       console.error('Greška pri postavljanju oglasa:', error)
+      error.value="Greška pri postavljanju oglasa"
       loading.value=false
     }
     
   }
+}
+const handleFileInput = () => {
+ error.value=""
 }
 </script>
 
