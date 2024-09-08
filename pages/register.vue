@@ -39,7 +39,7 @@ async function signUp() {
     
     setTimeout(() => {
       
-       navigateTo(`/`)
+       navigateTo(`/login`)
     }, 2500)
      // Preusmerava na početnu stranicu
   } catch (error) {
