@@ -165,12 +165,15 @@ const sendMail=async()=>{
   }
     
 }
-
+const redirectToExternalSite = () => {
+  window.location.href = 'https://motomaxshop.rs'
+}
 </script>
 
 <template>
     <Loading v-if="loading"/>
-    <div class="w-full mb-5 flex justify-center md:p-6 py-4 bg-[url('~/assets/bacground1.jpg')] bg-cover">
+    
+    <div class="w-full mb-0 mt-0 flex justify-center md:p-6 py-4 bg-[url('~/assets/bacground1.jpg')] bg-cover">
         <div class="md:w-[60%] w-full p-6 rounded-md bg-white bg-opacity-50 border-2 border-yellow-500 flex flex-wrap">
                 <h2 class="w-full flex items-center text-xl font-semibold m-2">Pretraga  <span class="text-sm font-bold">- {{ oglasiCount }} oglasa</span></h2>
                 <div class="w-full flex flex-wrap justify-start">
@@ -217,6 +220,31 @@ const sendMail=async()=>{
     </div>
 
     <div class="p-2 mb-2 bg-gray-100">
+      <div 
+    @click="redirectToExternalSite"
+    class="relative mx-auto md:h-48 md:w-[70%] h-28 cursor-pointer overflow-hidden"
+  >
+    <!-- Slika -->
+    <img 
+      src="https://ejcrowqjfiedgnebyxmr.supabase.co/storage/v1/object/public/Baneri/baner%20br1.jpg?t=2024-09-09T11%3A36%3A22.264Z"
+      alt="Moto max banner"
+      class="absolute inset-0  w-full h-full"
+    />
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+
+    <!-- Tekst -->
+    <div class="relative z-10 h-full flex flex-col justify-center items-center">
+      <div class="motomax-text md:text-5xl text-xl font-bold text-white">
+        Moto max
+        <div class=" text-2xl text-white mt-2">
+        Sve za Vaš motocikl
+      </div>
+      </div>
+     
+    </div>
+  </div>
       <h1 class="text-2xl my-2 mx-3 font-semibold">Poslednje dodati oglasi </h1>
       <MotoriSlide :oglasi="oglasi"/>
     </div>
@@ -298,3 +326,32 @@ const sendMail=async()=>{
         
     </div>
 </template>
+<style scoped>
+
+.motomax-text{
+  animation: moveText 10s infinite;
+}
+.slogan {
+  opacity: 0;
+  animation: fadeInOut 8s infinite;
+  
+}
+
+@keyframes moveText {
+  0% {
+    transform: translateX(-200%) ;
+  }
+  100% {
+    transform: translateX(300%) ;
+  }
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+</style>
