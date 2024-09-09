@@ -22,8 +22,9 @@
         <!-- Blog Post Images -->
       
         <!-- Blog Post Content -->
-        <div class="md:p-6 space-y-4 text-gray-500 mx-auto flex flex-wrap justify-center md:max-w-[80%]">
-      <p>{{ blogPost.content || 'No content available' }}</p>
+        <div class="prose-lg md:p-6 space-y-4 text-gray-500 mx-auto flex flex-wrap justify-center md:max-w-[80%]">
+        
+      <article v-html="blogPost.content || 'No content avalible'"></article>
       <img class="w-full" v-if="blogPost.images?.[0]" :src="blogPost.images[0]" alt="Image 1">
       <p>{{ blogPost.content2 || 'No additional content available' }}</p>
       <img class="w-full" v-if="blogPost.images?.[1]" :src="blogPost.images[1]" alt="Image 2">
@@ -31,7 +32,11 @@
       <img class="w-full" v-if="blogPost.images?.[2]" :src="blogPost.images[2]" alt="Image 3">
         </div>
         <!-- Share Buttons -->
-         <NuxtLink class="text-blue-400 flex mt-3 max-w-[80%] items-center" to="/"> <i class="bi bi-arrow-left"></i> Nazad na početnu</NuxtLink>
+         <div class="w-full flex justify-between">
+           <NuxtLink class="text-blue-400 flex mt-3  items-center" to="/"> <i class="bi bi-arrow-left"></i> Nazad na početnu</NuxtLink>
+           <NuxtLink class="text-blue-400 flex mt-3  items-center" to="/blogs">  Čitajte ostale priče <i class="bi bi-arrow-right"></i></NuxtLink>
+
+         </div>
         <h4 class="w-full mt-3">Podeli ovu priču na:</h4>
         <div class="mt-2 flex md:space-x-4 space-x-1">
       

@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import tailwindTypography from '@tailwindcss/typography';
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: false },
@@ -31,6 +33,11 @@ export default defineNuxtConfig({
       ]
     }
   },
+  tailwindcss: {
+    config: {
+        plugins: [tailwindTypography],
+    }
+},
   devServer: {
     host: '0.0.0.0', // Listen on all IPs
     port: 3000       // Use port 3000 or any other open port

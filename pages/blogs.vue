@@ -56,10 +56,11 @@ return formatDate
 
 </script>
 <template>
+  <Loading v-if="loading"/>
     <div class="w-full flex flex-wrap  h-full bg-gray-300 md:p-8 p-2">
     <hr>
     <div class="flex h-11 w-full p-3">
-        <NuxtLink class="text-blue-700 flex items-center" to="/"><Icon name="ic:baseline-house" class="text-lg"></Icon> Početna/</NuxtLink>
+        <NuxtLink class="text-blue-700 flex items-center" to="/"><i class="bi bi-house mx-1 text-lg"></i> Početna/</NuxtLink>
         <NuxtLink class="text-blue-700 flex items-center" to="#">Blogovi/Svi-Blogovi/</NuxtLink>
     </div>
     
@@ -67,8 +68,8 @@ return formatDate
     <div class="flex flex-wrap w-full justify-start md:p-3 my-2" v-if="blogovi.length>0">
           
        <h2 class="w-full md:text-2xl text-xl mx-3">Svi Blogovi i Vesti</h2>
-          <div v-for="oglas in blogovi" :key="oglas.id"  class="md:w-2/3 cursor-pointer mx-4  my-4 flex rounded-md bg-gray-200 justify-start md:52 h-46">
-            <div class="slika h-full m-0 md:w-1/3 w-[50%]">
+          <div v-for="oglas in blogovi" :key="oglas.id"  class="md:w-[45%] cursor-pointer mx-4  my-4 flex rounded-md bg-gray-200 justify-start md:h-52 h-46">
+            <div class="slika h-full m-0  w-[60%]">
               <img :src="oglas.images[0]" class="h-full w-full">
 
             </div>

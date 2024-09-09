@@ -14,6 +14,7 @@ console.log("Menu state:"+isMenuOpen)
                 <NuxtLink class="bg-transparent w-full text-white ml-2 my-2 cursor-pointer flex items-center text-lg" to="/"> Početna</NuxtLink>
                 <NuxtLink class="bg-transparent w-full text-white ml-2 my-2 cursor-pointer flex items-center text-lg" to="/blogs"> Blog</NuxtLink>
                 <NuxtLink class="bg-transparent w-full text-white ml-2 my-2 cursor-pointer flex items-center text-lg" to="/#kontakt"> Kontakt</NuxtLink>
+                <NuxtLink class="bg-transparent w-full text-white ml-2 my-2 cursor-pointer flex items-center text-lg" to="/about"> O nama</NuxtLink>
 
 
                 <NuxtLink v-if="Object.keys(store.currentUser).length == 0" to="/login" class="bg-transparent w-full text-white my-2 cursor-pointer flex items-center text-lg ">     <i class="bi bi-box-arrow-right mx-1"></i> Prijava</NuxtLink>

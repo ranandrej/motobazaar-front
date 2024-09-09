@@ -21,6 +21,8 @@ console.log(useMainStore().currentUser.value)
         <NuxtLink class="md:flex hidden items-center text-white hover:text-yellow-500 mx-3" to="/"> Početna</NuxtLink>
         <NuxtLink class="md:flex hidden items-center text-white hover:text-yellow-500 mx-3" to="/blogs"> Blog</NuxtLink>
         <NuxtLink class="md:flex hidden items-center text-white hover:text-yellow-500 mx-3" to="/#kontakt"> Kontakt</NuxtLink>
+        <NuxtLink class="md:flex hidden items-center text-white hover:text-yellow-500 mx-3" to="/about"> O nama</NuxtLink>
+
       </div>
         <div class="hidden sm:flex p-4 m-0 justify-start items-center">
           <NuxtLink
