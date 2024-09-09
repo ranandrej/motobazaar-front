@@ -329,7 +329,7 @@ const redirectToExternalSite = () => {
 <style scoped>
 
 .motomax-text{
-  animation: moveText 10s infinite;
+  animation: fadeInOut 10s infinite;
 }
 .slogan {
   opacity: 0;
