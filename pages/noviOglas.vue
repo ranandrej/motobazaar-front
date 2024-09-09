@@ -153,7 +153,7 @@
             name="snaga"
             min="1"
             max="1000"
-            step="1"
+            step="0.1"
             class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
             required
           />
@@ -244,6 +244,16 @@
           />
           <label for="" class="w-full text-sm font-semibold text-yellow-500" v-if="error">{{ error }}</label>
           <NuxtLink v-if="showLogin" class="mt-1 cursor-pointer text-blue-400 underline" to="/login">Prijavite se</NuxtLink>
+          <div v-if="imagePreviews.length > 0" class="my-4 grid md:grid-cols-3 grid-cols-1 gap-4">
+      <div v-for="(image, index) in imagePreviews" :key="index" class="relative overflow-y-hidden group">
+        <img :src="image.src" :style="{ transform: `rotate(${image.rotation}deg)` }" class="overflow-y-hidden h-52 w-full object-cover" />
+
+        <!-- Rotate button -->
+        <button @click.prevent="rotateImage(index)" class="absolute top-2 right-2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-80 group-hover:opacity-100">
+          Rotate
+        </button>
+      </div>
+    </div>
         </div>
         <!-- Submit Button -->
         <div class="flex justify-end">
@@ -263,6 +273,7 @@
 import { useRuntimeConfig } from '#app'
 import { ref,onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import EXIF from 'exif-js'
 
 const successPost=ref(false)
 const fetchWithAuth=useNuxtApp().$fetchWithAuth
@@ -272,84 +283,104 @@ const error=ref("")
 const loading = ref(false)
 const router=useRouter()
 const showLogin=ref(false)
+const imagePreviews = ref([])
+
 const handleSubmit = async (event) => {
   
-  event.preventDefault()
+  event.preventDefault();
 
-  error.value=""
-  const form = event.target
-  const formData = new FormData(form)
-  const user = JSON.parse(localStorage.getItem('user'))
-  let userId=""
-  if(!user){
-    showLogin.value=true
-    error.value=`Prijavite se ili kreirajte nalog da bi postavili oglas!`
-    return
+  error.value = "";
+  const form = event.target;
+  const formData = new FormData(form);
+  const user = JSON.parse(localStorage.getItem('user'));
+  let userId = "";
+
+  if (!user) {
+    showLogin.value = true;
+    error.value = "Prijavite se ili kreirajte nalog da bi postavili oglas!";
+    return;
   }
-  if(user.id){
-    userId= user.id
-    showLogin.value=false
-
-  }else{
-    error.value="Invalid user"
-    return
+  if (user.id) {
+    userId = user.id;
+    showLogin.value = false;
+  } else {
+    error.value = "Invalid user";
+    return;
   }
-   
-  // Add user ID to FormData
-  
-    formData.append('user', userId)
-    formData.append('slikaPaths',[])
-    formData.append('pregledi',0)
-    const fileInput = document.querySelector('input[name="images"]');
-    const files= fileInput.files
- 
 
-  // Check if the number of files exceeds 4
-  console.log(files.length)
-  if (files.length==0) {
-  error.value = 'Morate postaviti barem jednu sliku.';
-  return
-} else if (files.length > 4) {
-  error.value = 'Možete postaviti maksimalno 4 slike.';
-  return
-}
-  const isFirstOwner = formData.get('prvi_vlasnik') ? true : false
-  const isRegistered = formData.get('registrovan') ? true : false
-  formData.set('prvi_vlasnik', isFirstOwner)
-  formData.set('registrovan', isRegistered)
-  loading.value=true
+  // Add user ID and other data to FormData
+  formData.append('user', userId);
+  formData.append('slikaPaths', []);
+  formData.append('pregledi', 0);
+
+  // Append images and their rotation metadata
+  imagePreviews.value.forEach((preview, index) => {
+    // Append file
+    formData.append('images[]', preview.file); // Append file to 'images'
+    formData.append(`rotation_${index}`, preview.rotation.toString());
+  });
+
+  const isFirstOwner = formData.get('prvi_vlasnik') ? true : false;
+  const isRegistered = formData.get('registrovan') ? true : false;
+  formData.set('prvi_vlasnik', isFirstOwner);
+  formData.set('registrovan', isRegistered);
+
+  loading.value = true;
 
   try {
     const response = await $fetch(`${config.public.apiUrl}/api/postMotocikl/`, {
       method: 'POST',
       body: formData,
-      headers:{
-        Authorization:`Bearer ${useMainStore().accessToken}`
+      headers: {
+        Authorization: `Bearer ${useMainStore().accessToken}`
       }
-    })
+    });
 
-      successPost.value=true
-      console.log('Oglas uspešno postavljen')
-      setTimeout(() => {
-     
-       navigateTo(`/profile/user/${userId}`)
-    }, 2000)
-      
-  
-    loading.value=false
+    successPost.value = true;
+    console.log('Oglas uspešno postavljen');
+    setTimeout(() => {
+      navigateTo(`/profile/user/${userId}`);
+    }, 2000);
+
+    loading.value = false;
   } catch (error) {
-    if(error.status==401){
-      window.location.href="/login"
-    }else{
-      console.error('Greška pri postavljanju oglasa:', error)
-      error.value="Greška pri postavljanju oglasa"
-      loading.value=false
+    if (error.status === 401) {
+      window.location.href = "/login";
+    } else {
+      console.error('Greška pri postavljanju oglasa:', error);
+      error.value = "Greška pri postavljanju oglasa";
+      loading.value = false;
     }
-    
   }
 }
 const handleFileInput = () => {
- error.value=""
+ 
+  error.value = "";
+  const files = event.target.files;
+  imagePreviews.value = [];
+
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      // Store file and initial rotation in imagePreviews
+      imagePreviews.value.push({
+        file: file, // Keep the original file reference
+        src: e.target.result,
+        rotation: 0 // Default rotation
+      });
+    };
+
+    reader.readAsDataURL(file);
+  }
+}
+const rotateImage = (index) => {
+  // Rotate the image by 90 degrees
+  imagePreviews.value[index].rotation += 90
+  if (imagePreviews.value[index].rotation === 360) {
+    imagePreviews.value[index].rotation = 0
+  }
 }
 </script>
 
