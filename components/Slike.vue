@@ -16,7 +16,7 @@ return formatDate
 </script>
 
 <template>
-    <Swiper class="md:max-w-[90%]" style="--swiper-navigation-color: yellow;"
+    <Swiper class="md:max-w-[90%] w-[90%]" style="--swiper-navigation-color: yellow;"
   
     
       :modules="[SwiperController,SwiperFreeMode,SwiperNavigation]"
