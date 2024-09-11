@@ -18,11 +18,7 @@ const currentIndex=ref(0)
 const lastScrollTop = ref(0);
 const isScrollingDown = ref(false);
 onMounted(async()=>{
-    AOS.init({
-    duration: 1000, // trajanje animacije u milisekundama
-    easing: 'ease-in-out', // vrsta efekta animacije
-    once: true, // animacija će se pokrenuti samo jednom
-  });
+   
   window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY;
 
@@ -127,6 +123,8 @@ const motociklUrl = useRequestURL().href
 <SuccessAlert v-if="omiljeniSuccess" :message="poruka"/>
 <PrijavaOglasaModal v-if="useMainStore().isPrijavaModalOpen"/>
 <div class="w-full flex flex-wrap min-h-screen bg-gray-300 md:p-6 p-1">
+  <Baner class="mb-3" :text1="'Posetite naš shop'" :link="'https://motomaxshop.rs/'" :slika="'https://ejcrowqjfiedgnebyxmr.supabase.co/storage/v1/object/public/Baneri/baner%20br1%20final.jpg?t=2024-09-11T16%3A23%3A11.037Z'"/>
+
     <hr>
     <div class="flex w-full p-3">
         <NuxtLink class="text-blue-700 flex items-center" to="/"><i class="bi bi-house"></i> Početna/Oglasi/</NuxtLink>
@@ -230,8 +228,14 @@ const motociklUrl = useRequestURL().href
             <p>Facebook</p>
           </a>
         </div>
+        <div class="w-full md:p-0 p-6">
+          <Baner class="my-3"  :link="'https://motobikeshop.rs/'" :slika="'https://ejcrowqjfiedgnebyxmr.supabase.co/storage/v1/object/public/Baneri/banner3.jpg?t=2024-09-11T16%3A13%3A47.975Z'"/>
         </div>
+
+        </div>
+
     </div>
+
 
 </div>
 <div class="relative">
