@@ -17,6 +17,7 @@
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@pinia/nuxt": "^0.5.1",
     "@tailwindcss/typography": "^0.5.15",
+    "aos": "^2.3.4",
     "autoprefixer": "^10.4.19",
     "exif-js": "^2.3.0",
     "nuxt": "^3.12.4",

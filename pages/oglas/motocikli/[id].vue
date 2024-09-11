@@ -3,7 +3,8 @@ import { onMounted,ref } from 'vue';
 import { useRoute } from '#app';
 
 import { useRuntimeConfig } from '#app'
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const config=useRuntimeConfig()
 const oglas = ref({})
 const prodavac=ref({})
@@ -14,7 +15,27 @@ const omiljeniSuccess=ref(false)
 const poruka=ref("")
 const isLikeDisabled = ref(false); // Praćenje da li je dugme onemogućeno
 const currentIndex=ref(0)
+const lastScrollTop = ref(0);
+const isScrollingDown = ref(false);
 onMounted(async()=>{
+    AOS.init({
+    duration: 1000, // trajanje animacije u milisekundama
+    easing: 'ease-in-out', // vrsta efekta animacije
+    once: true, // animacija će se pokrenuti samo jednom
+  });
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+
+    // Check if scrolling down
+    if (scrollTop > lastScrollTop.value) {
+      isScrollingDown.value = true;
+    } else {
+      isScrollingDown.value = false;
+    }
+
+    lastScrollTop.value = scrollTop;
+  });
+ 
     const route = useRoute()
     const { id } = route.params
     loading.value=true
@@ -213,4 +234,32 @@ const motociklUrl = useRequestURL().href
     </div>
 
 </div>
+<div class="relative">
+    <!-- Ostatak stranice -->
+
+    <!-- Sticky dugme -->
+    <div class="fixed bottom-0 left-0 w-full p-4 bg-gray-300 md:hidden transition-transform duration-1000 ease-in-out" :class="{ 'translate-y-full': isScrollingDown }"
+   >
+         <a
+        :href="'tel:' + prodavac.telefon"
+        class="flex items-center justify-center w-full text-gray-500 bg-yellow-500 font-bold py-3 "
+      >
+      <i class="bi bi-telephone-fill mx-1"></i> Pozovi oglašivača
+      </a>
+      <a
+        :href="'sms:' + prodavac.telefon"
+        class="flex items-center justify-center w-full mt-2 text-gray-500 font-bold py-3 bg-gray-200"
+      >
+      <i class="bi bi-chat-dots-fill mx-1"></i> Pošalji poruku
+      </a>
+    </div>
+  </div>
+
 </template>
+
+<style scoped>
+.translate-y-full {
+  transform: translateY(100%);
+}
+
+</style>

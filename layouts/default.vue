@@ -9,7 +9,7 @@ console.log(useMainStore().currentUser.value)
    <template>
   <div class="flex flex-col min-h-screen">
     <!-- Header -->
-    <div class="p-4 mb-1 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
+    <div class="p-4 mb-1 text-sm text-blue-800  bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
   <span class="font-medium">Obaveštenje za korisnike!</span> Većina oglasa trenutno su samo proba-primeri oglasa zbog izgleda sajta.Isti će biti uklonjeni kada se sajt napuni pravim oglasima.
 </div>
     <div class="w-full m-0 min-h-[100px] z-40 sticky top-0 bg-slate-800 flex p-3">
