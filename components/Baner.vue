@@ -37,7 +37,7 @@ onMounted(async()=>{
     <div class="relative z-10 h-full flex flex-col justify-center items-center">
       <div data-aos="fade-right" class="motomax-text md:text-5xl text-2xl font-bold text-white">
         {{text1}}
-        <div data-aos="fade-right" class=" text-lg text-white mt-2 animate-pulse">
+        <div data-aos="fade-right" class=" text-lg text-white mt-2 ">
         {{ text2 }}
       </div>
       </div>
