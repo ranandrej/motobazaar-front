@@ -261,5 +261,14 @@ const motociklUrl = useRequestURL().href
 .translate-y-full {
   transform: translateY(100%);
 }
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards; /* 0.5s trajanje animacije */
+}
 
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
 </style>

@@ -4,7 +4,7 @@
       
       <div class="container md:max-w-[80%] bg-gray-50 mx-auto md:p-8 p-4">
           <hr>
-      <div class="flex h-11 w-full p-3">
+      <div class="flex mb-2 h-11 w-full p-3">
           <NuxtLink class="text-xs text-blue-700 flex items-center" to="/"><i class="bi bi-house"></i> Početna/</NuxtLink>
           <NuxtLink class=" text-xs text-blue-700 flex flex-wrap items-center" to="#">BlogPost/{{blogPost.title}}/</NuxtLink>
       </div>

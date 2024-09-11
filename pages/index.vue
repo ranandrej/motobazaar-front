@@ -165,9 +165,7 @@ const sendMail=async()=>{
   }
     
 }
-const redirectToExternalSite = () => {
-  window.location.href = 'https://motomaxshop.rs'
-}
+
 </script>
 
 <template>
@@ -220,38 +218,15 @@ const redirectToExternalSite = () => {
     </div>
 
     <div class="p-2 mb-2 bg-gray-100">
-      <div 
-    @click="redirectToExternalSite"
-    class="relative mx-auto md:h-48 md:w-[70%] h-28 cursor-pointer overflow-hidden"
-  >
-    <!-- Slika -->
-    <img 
-      src="https://ejcrowqjfiedgnebyxmr.supabase.co/storage/v1/object/public/Baneri/baner%20br1.jpg?t=2024-09-09T11%3A36%3A22.264Z"
-      alt="Moto max banner"
-      class="absolute inset-0  w-full h-full"
-    />
-
-    <!-- Overlay -->
-    <div class="absolute inset-0 bg-black bg-opacity-30"></div>
-
-    <!-- Tekst -->
-    <div class="relative z-10 h-full flex flex-col justify-center items-center">
-      <div class="motomax-text md:text-5xl text-xl font-bold text-white">
-        Moto max
-        <div class=" text-2xl text-white mt-2">
-        Sve za Vaš motocikl
-      </div>
-      </div>
-     
-    </div>
-  </div>
+     <Baner :text1="'Moto Max'" :text2="'Sve za vaš motocikl'" :link="'https://motomaxshop.rs'"
+     :slika="'https://ejcrowqjfiedgnebyxmr.supabase.co/storage/v1/object/public/Baneri/baner%20br1.jpg?t=2024-09-09T11%3A36%3A22.264Z'"
+      alt="Moto max banner"/>
       <h1 class="text-2xl my-2 mx-3 font-semibold">Poslednje dodati oglasi </h1>
       <MotoriSlide :oglasi="oglasi"/>
     </div>
     
-    <div class="p-10 w-full bg-gray-50 min-h-full flex flex-wrap justify-center">
-
-       
+    <div class="md:p-10 p-4 w-full bg-gray-50 min-h-full flex flex-wrap justify-center">
+  <Baner class=" mb-3" :text1="'Peda Motors'" :text2="'Pogledajte Ponudu'" :link="'https://peda.rs/'" :slika="'https://ejcrowqjfiedgnebyxmr.supabase.co/storage/v1/object/public/Baneri/Baner-728x90.jpg?t=2024-09-11T15%3A27%3A35.646Z'"/>
 <h1 class="w-full text-2xl font-semibold">Najgledaniji oglasi </h1>
 <div class="flex flex-wrap mx-auto md:justify-start justify-center md:p-6">
     <NuxtLink v-for="oglas in najgledaniji" :key="oglas.id" :to="`/oglas/motocikli/${oglas.id}`" class="bg-white rounded-md m-3 cursor-pointer md:w-60 w-72 overflow-hidden md:h-72 h-80 shadow-md">
@@ -328,9 +303,7 @@ const redirectToExternalSite = () => {
 </template>
 <style scoped>
 
-.motomax-text{
-  animation: fadeInOut 10s infinite;
-}
+
 .slogan {
   opacity: 0;
   animation: fadeInOut 8s infinite;
@@ -346,12 +319,5 @@ const redirectToExternalSite = () => {
   }
 }
 
-@keyframes fadeInOut {
-  0%, 100% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-}
+
 </style>
