@@ -22,13 +22,13 @@
         <!-- Blog Post Images -->
       
         <!-- Blog Post Content -->
-        <div class="prose-lg md:p-6 space-y-4 text-gray-500 mx-auto flex flex-wrap justify-center md:max-w-[80%]">
+        <div class="prose md:p-6 space-y-4 text-gray-500 mx-auto flex flex-wrap justify-center md:max-w-[80%]">
         
       <article v-html="blogPost.content || 'No content avalible'"></article>
       <img class="w-full" v-if="blogPost.images?.[0]" :src="blogPost.images[0]" alt="Image 1">
-      <p>{{ blogPost.content2 || 'No additional content available' }}</p>
+      <article class="w-full" v-html="blogPost.content2 || 'No additional content available' "></article>
       <img class="w-full" v-if="blogPost.images?.[1]" :src="blogPost.images[1]" alt="Image 2">
-      <p>{{ blogPost.content3 || 'No further content available' }}</p>
+      <article v-html="blogPost.content3 || 'No further content available' "></article>
       <img class="w-full" v-if="blogPost.images?.[2]" :src="blogPost.images[2]" alt="Image 3">
         </div>
         <!-- Share Buttons -->
