@@ -170,7 +170,7 @@ const sendMail=async()=>{
 
 <template>
     <Loading v-if="loading"/>
-    
+    <a class="flex justify-center" href="https://motobikeshop.rs"><img src="https://ejcrowqjfiedgnebyxmr.supabase.co/storage/v1/object/public/Baneri/banner1.jpg?t=2024-09-12T08%3A46%3A55.784Z" alt=""></a>
     <div class="w-full mb-0 mt-0 flex justify-center md:p-6 py-4 bg-[url('~/assets/bacground1.jpg')] bg-cover">
         <div class="md:w-[60%] w-full p-6 rounded-md bg-white bg-opacity-50 border-2 border-yellow-500 flex flex-wrap">
                 <h2 class="w-full flex items-center text-xl font-semibold m-2">Pretraga  <span class="text-sm font-bold">- {{ oglasiCount }} oglasa</span></h2>
