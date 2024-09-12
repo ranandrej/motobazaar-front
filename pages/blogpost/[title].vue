@@ -1,7 +1,8 @@
 <template>
   <Loading v-if="loading"/>
     <section class="w-full h-full bg-[url('~/assets/bacground1.jpg')] bg-cover p-4">
-      
+      <Baner class="mb-3" :text1="'Posetite naš shop'" :link="'https://motomaxshop.rs/'" :slika="'https://ejcrowqjfiedgnebyxmr.supabase.co/storage/v1/object/public/Baneri/baner%20br1%20final.jpg?t=2024-09-11T16%3A23%3A11.037Z'"/>
+
       <div class="container md:max-w-[80%] bg-gray-50 mx-auto md:p-8 p-4">
           <hr>
       <div class="flex mb-2 h-11 w-full p-3">
@@ -59,6 +60,36 @@
         </div>
       </div>
     </section>
+    <Baner class=" my-3" :text1="'Peda Motors'" :text2="'Pogledajte Ponudu'" :link="'https://peda.rs/'" :slika="'https://ejcrowqjfiedgnebyxmr.supabase.co/storage/v1/object/public/Baneri/Baner-728x90.jpg?t=2024-09-11T15%3A27%3A35.646Z'"/>
+
+  <section class="bg-[url(~/assets/background2.jpg)] mt-2 bg-center py-8">
+    <div class="container mx-auto px-4">
+      <h2 class="md:text-3xl text-xl text-white font-normal text-center mb-6"><span class="text-yellow-500">Čitajte</span> najnovije vesti</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div 
+          v-for="post in blogPosts" 
+          :key="post.id" 
+          class="bg-white shadow-md w-[80%] mx-auto md:w-full rounded-lg overflow-hidden transition transform hover:scale-105"
+        >
+          <img 
+            :src="post.images[0]" 
+            alt="" 
+            class="w-full max-h-40 object-cover"
+          />
+          <div class="p-4">
+            <h3 class="text-lg font-semibold mb-2">{{ post.title }}</h3>
+            <p class="text-gray-600 mb-4 text-sm line-clamp-3">{{ post.subtitle }}</p>
+            <NuxtLink
+              :to="`/blogpost/${post.title}`"
+              class="inline-block text-indigo-600 hover:text-indigo-800 font-semibold"
+            >
+              Pročitaj više
+            </NuxtLink>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   </template>
   
   <script setup>
@@ -71,6 +102,7 @@ const config=useRuntimeConfig()
 const blogPost = ref({})
 
 const loading = ref(false)
+const blogPosts=ref([])
  // Praćenje da li je dugme onemogućeno
 const formattedDate=ref("")
 onMounted(async()=>{
@@ -98,7 +130,12 @@ const views = await $fetch(`${config.public.apiUrl}/api/updateBlogViews/`, {
      
     })
     loading.value=false
-    
+    const blogs = await $fetch(`${config.public.apiUrl}/api/blogposts/`, {
+      method: 'GET',
+     
+     
+    })
+    blogPosts.value=blogs
 })
   
   // Mock data for blog post (replace with actual data fetching logic)
