@@ -152,7 +152,9 @@ const motociklUrl = useRequestURL().href
 
             </div>
 
-            
+
+            <a class="flex justify-center mt-2" href="https://yamahabarel.com/"><img src="https://ejcrowqjfiedgnebyxmr.supabase.co/storage/v1/object/public/Baneri/Baner1.png?t=2024-09-12T09%3A54%3A13.286Z" alt=""></a>
+
                 <div class="bg-white text-gray-800 flex flex-wrap p-6 drop-shadow-lg mt-5 rounded-md">
                     <h1 class="w-full text-xl mb-6 font-semibold">Opšte informacije</h1>
                     <hr class="text-black">
@@ -195,6 +197,7 @@ const motociklUrl = useRequestURL().href
                  <p class="font-thin">{{ oglas.opis }}</p>
                 
             </div>
+
         </div>
         <div class="p-4 md:w-1/2">
             <h2 class="text-2xl  font-bold">Cena:{{ oglas.cena}}€ <span class="text-sm w-full text-yellow-500">+dodatni troškovi kupovine</span></h2>
