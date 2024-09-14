@@ -148,17 +148,17 @@ const changePassword=async()=>{
       <RemoveModal v-if="useMainStore().isRemoveModalOpen"/>
       <UpdateModal v-if="useMainStore().isUpdateModalOpen"/>
       <UpdateUserModal v-if="useMainStore().isUpdateUserModalOpen"/>
-        <div class="flex flex-wrap justify-start md:p-5 p-0 px-2 my-6" v-if="oglasi.length>0">
+        <div class="flex flex-wrap justify-start md:p-5 p-0 px-2 my-0" v-if="oglasi.length>0">
           <h2 class="text-xl w-full font-semibold text-black m-2 mt-4">Vaši Oglasi</h2>
           <div class="mt-1 w-full">
             <NuxtLink to="/noviOglas"
-              class="bg-transparent border-2 hover:bg-yellow-500 border-yellow-500 mx-1 text-gray-700 cursor-pointer p-1 mt-4"
+              class="bg-transparent border bg-yellow-500 border-yellow-500 mx-1 text-white cursor-pointer p-1 px-2 mt-4"
               v-if="Object.keys(useMainStore().currentUser).length > 0"
             >
              + Postavite Novi Oglas
             </NuxtLink>
           </div>
-          <div v-for="oglas in oglasi" :key="oglas.id"  class="md:w-[45%] mr-2 my-4 flex rounded-md bg-gray-200 justify-start max-h-50 md:max-h-48">
+          <div v-for="oglas in oglasi" :key="oglas.id"  class="md:w-[45%] mx-1 my-4 flex rounded-md bg-gray-200 justify-start max-h-50 md:max-h-48">
             <NuxtLink :to="`/oglas/motocikli/${oglas.id}`" class="slika h-full m-0 md:w-1/3 w-[60%]">
               <img :src="oglas.slikaPaths[0]" class="h-full w-full">
 
@@ -192,9 +192,9 @@ const changePassword=async()=>{
           </NuxtLink>
 
           </div>
-          <div class="flex flex-wrap justify-start md:p-5 p-0 my-6" v-if="omiljeniOglasi.length>0">
+          <div class="flex flex-wrap justify-start md:p-5 p-2 my-6" v-if="omiljeniOglasi.length>0">
           <h2 class="text-xl mx-2 w-full font-thin text-black"><i class="bi bi-heart text-md"></i> Oglasi koje ste označili kao "omiljeni" </h2>
-          <div  v-for="oglas in omiljeniOglasi" :key="oglas.id" class="md:w-[80%] my-4 flex rounded-md bg-gray-200 justify-start max-h-56 md:max-h-64">
+          <div  v-for="oglas in omiljeniOglasi" :key="oglas.id" class="md:w-[50%] my-4 mx-1 flex rounded-md bg-gray-200 justify-start max-h-56 md:max-h-64">
             <div class="slika h-full m-0 md:w-1/3 w-[50%]">
               <img :src="oglas.slikaPaths[0]" class="h-full w-full">
 

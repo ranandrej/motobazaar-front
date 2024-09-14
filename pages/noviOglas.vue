@@ -242,7 +242,7 @@
             multiple
             class="mt-2 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-yellow-500 file:text-white hover:file:bg-yellow-600"
           />
-          <label for="" class="w-full text-sm font-semibold text-yellow-500" v-if="error">{{ error }}</label>
+          <label for="" class="w-full text-sm font-semibold text-yellow-500" v-if="errorMessage">{{ errorMessage }}</label>
           <NuxtLink v-if="showLogin" class="mt-1 cursor-pointer text-blue-400 underline" to="/login">Prijavite se</NuxtLink>
           <div v-if="imagePreviews.length > 0" class="my-4 grid md:grid-cols-3 grid-cols-1 gap-4">
       <div v-for="(image, index) in imagePreviews" :key="index" class="relative overflow-y-hidden group">
@@ -279,7 +279,7 @@ const successPost=ref(false)
 const fetchWithAuth=useNuxtApp().$fetchWithAuth
 const formRef = ref(null)
 const config = useRuntimeConfig()
-const error=ref("")
+const errorMessage=ref("")
 const loading = ref(false)
 const router=useRouter()
 const showLogin=ref(false)
@@ -289,7 +289,7 @@ const handleSubmit = async (event) => {
   
   event.preventDefault();
 
-  error.value = "";
+  errorMessage.value = "";
   const form = event.target;
   const formData = new FormData(form);
   const user = JSON.parse(localStorage.getItem('user'));
@@ -297,14 +297,14 @@ const handleSubmit = async (event) => {
 
   if (!user) {
     showLogin.value = true;
-    error.value = "Prijavite se ili kreirajte nalog da bi postavili oglas!";
+    errorMessage.value = "Prijavite se ili kreirajte nalog da bi postavili oglas!";
     return;
   }
   if (user.id) {
     userId = user.id;
     showLogin.value = false;
   } else {
-    error.value = "Invalid user";
+    errorMessage.value = "Invalid user";
     return;
   }
 
@@ -335,9 +335,10 @@ const handleSubmit = async (event) => {
         Authorization: `Bearer ${useMainStore().accessToken}`
       }
     });
+    
 
     successPost.value = true;
-    console.log('Oglas uspešno postavljen');
+    
     setTimeout(() => {
       navigateTo(`/profile/user/${userId}`);
     }, 2000);
@@ -346,16 +347,20 @@ const handleSubmit = async (event) => {
   } catch (error) {
     if (error.status === 401) {
       window.location.href = "/login";
+   
+    
     } else {
       console.error('Greška pri postavljanju oglasa:', error);
-      error.value = "Greška pri postavljanju oglasa";
+       // Izvuci JSON iz odgovora
+     
+      errorMessage.value=error.data.message || "Došlo je do greške."
       loading.value = false;
     }
   }
 }
 const handleFileInput = () => {
  
-  error.value = "";
+  errorMessage.value = "";
   const files = event.target.files;
   imagePreviews.value = [];
 

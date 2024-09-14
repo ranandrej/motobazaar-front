@@ -181,21 +181,21 @@ watch(() => route.query, loadResults, { immediate: true })
       <div class="flex flex-wrap w-full justify-start md:p-3 p-0 my-2 " v-if="oglasi.length>0">
       
           <h2 class="text-xl mx-3 w-full font-light text-black">Rezultati pretrage - <span class="text-xs font-semibold">pronađeno {{ oglasi.length }} oglasa</span></h2>
-            <NuxtLink v-for="oglas in oglasi" :key="oglas.id" :to="`/oglas/motocikli/${oglas.id}`" class="md:w-2/3 cursor-pointer md:mx-2  my-4 flex rounded-md bg-gray-50 justify-start md:h-56 h-46">
-              <div class="slika h-full m-0 md:w-1/3 w-[70%]">
+            <NuxtLink v-for="oglas in oglasi" :key="oglas.id" :to="`/oglas/motocikli/${oglas.id}`" class="md:w-[45%] cursor-pointer mx-4  my-4 flex rounded-md bg-white justify-start md:h-56 h-46">
+              <div class="slika h-full m-0 md:w-[50%] w-[70%]">
                 <img :src="oglas.slikaPaths[0]" class="h-full w-full">
               </div>
-              <div class="w-2/3 md:p-4 px-3 py-1 h-1/2 flex flex-wrap justify-start">
-                <div class="w-full flex justify-between text-black font-semibold md:text-xl text-lg">
+              <div class="w-2/3 md:p-4 px-3 py-1 h-1/2 text-black flex flex-wrap justify-start">
+                <div class="w-full flex justify-between  font-semibold md:text-xl text-lg">
                   <p>{{ oglas.marka }} {{oglas.model}}</p>
       
                 </div>
-                <p class="w-full md:text-normal text-black  font-thin">{{ oglas.godiste }}.god.</p>
-                <p class="w-full md:text-normal text-sm text-black font-thin">{{ oglas.kilometraza }} km</p>
-                <p class="w-full  font-thin flex items-center md:mt-2 text-gray-600"><i class="bi bi-geo-alt"></i> {{ oglas.mesto }}</p>
+                <p class="w-full md:text-normal  font-thin">{{ oglas.godiste }}.god.</p>
+                <p class="w-full md:text-normal text-sm  font-thin">{{ oglas.kilometraza }} km</p>
+                <p class="w-full  font-thin flex items-center md:mt-2 "><i class="bi bi-geo-alt"></i> {{ oglas.mesto }}</p>
                 <p v-if="oglas.registrovan" class="bg-green-500 mt-1 p-1 text-white text-sm">Registrovan</p>
                 <p v-if="oglas.prvi_vlasnik" class="bg-orange-500 mt-1 p-1 text-white text-sm">Prvi vlasnik</p>
-                <p class="w-full md:mt-5 mt-1 mb-2 text-black md:text-xl text-lg font-semibold">{{ oglas.cena.toLocaleString('de-DE')}}€ <span class="text-yellow-500 text-xs">+dodatni troškovi kupovine</span></p>
+                <p class="w-full md:mt-5 mt-1 mb-2  md:text-xl text-lg font-semibold">{{ oglas.cena.toLocaleString('de-DE')}}€ <span class="md:flex hidden text-yellow-500 text-xs">+dodatni troškovi kupovine</span></p>
               </div>
             </NuxtLink>
       
