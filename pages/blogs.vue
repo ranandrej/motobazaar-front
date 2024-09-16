@@ -68,14 +68,14 @@ return formatDate
     <div class="flex flex-wrap w-full justify-start md:p-3 my-2" v-if="blogovi.length>0">
           
        <h2 class="w-full md:text-2xl text-xl mx-3">Svi Blogovi i Vesti</h2>
-          <div v-for="oglas in blogovi" :key="oglas.id"  class="md:w-[45%] cursor-pointer mx-4  my-4 flex rounded-md bg-gray-200 justify-start md:h-52 h-46">
+          <div v-for="oglas in blogovi" :key="oglas.id"  class="md:w-[45%] cursor-pointer md:mx-4  my-4 flex rounded-md bg-gray-200 justify-start md:h-52 h-40">
             <div class="slika h-full m-0  w-[60%]">
               <img :src="oglas.images[0]" class="h-full w-full">
 
             </div>
             <div class="w-2/3 p-4 h-1/2 flex flex-wrap justify-start">
               <div class="w-full flex justify-between text-black font-semibold md:text-xl">
-                <p>{{ oglas.title }}</p>
+                <p class="md:line-clamp-4 line-clamp-2">{{ oglas.title }}</p>
                 
               </div>
               <p class="w-full text-black md:text-md text-xs font-thin overflow-hidden md:line-clamp-4 line-clamp-2">{{ oglas.subtitle }}</p>
