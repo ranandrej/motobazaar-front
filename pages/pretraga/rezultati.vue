@@ -22,6 +22,13 @@ const godisteError=ref(false)
 const router=useRouter()
 const registrovan=ref(false)
 const prviVlasnik=ref(false)
+const kwMin=ref('')
+const kwMax=ref('')
+const kubikazaMin=ref('')
+const kubikazaMax=ref('')
+const kwError=ref(false)
+const kubikazaError=ref(false)
+const deteljnaPretragaShow=ref(false)
 
 const loadResults=async()=>{
     loading.value=true
@@ -29,7 +36,7 @@ const loadResults=async()=>{
     
     const { id } = route.params
     loading.value=true
-    const data = await $fetch(`${config.public.apiUrl}/api/searchMotocikli/?marka=${route.query.marka}&model=${route.query.model}&godiste_min=${route.query.godisteMin}&godiste_max=${route.query.godisteMax}&cena_min=${route.query.cena_min}&cena_max=${route.query.cena_max}&registrovan=${route.query.registrovan}&prvi_vlasnik=${route.query.prvi_vlasnik}`, {
+    const data = await $fetch(`${config.public.apiUrl}/api/searchMotocikli/?marka=${route.query.marka}&model=${route.query.model}&godiste_min=${route.query.godisteMin}&godiste_max=${route.query.godisteMax}&cena_min=${route.query.cena_min}&cena_max=${route.query.cena_max}&registrovan=${route.query.registrovan}&prvi_vlasnik=${route.query.prvi_vlasnik}&kwMin=${route.query.kwMin}&kwMax=${route.query.kwMax}&kubikazaMin=${route.query.kubikazaMin}&kubikazaMax=${route.query.kubikazaMax}`, {
       method: 'GET',
      
      
@@ -43,7 +50,7 @@ const loadResults=async()=>{
      
     })
     marke.value=marks
-    console.log(marke.value)
+    
 }
 onMounted(async()=>{
     loadResults()
@@ -55,7 +62,7 @@ const fetchPage=async(page)=>{
         top: 0,
         behavior: 'smooth'
      })
-     const data = await $fetch(`${config.public.apiUrl}/api/searchMotocikli/?page=${page}&marka=${route.query.marka}&model=${route.query.model}&godiste_min=${route.query.godisteMin}&godiste_max=${route.query.godisteMax}&cena_min=${route.query.cena_min}&cena_max=${route.query.cena_max}&registrovan=${route.query.registrovan}&prvi_vlasnik=${route.query.prvi_vlasnik}`, {
+     const data = await $fetch(`${config.public.apiUrl}/api/searchMotocikli/?page=${page}&marka=${route.query.marka}&model=${route.query.model}&godiste_min=${route.query.godisteMin}&godiste_max=${route.query.godisteMax}&cena_min=${route.query.cena_min}&cena_max=${route.query.cena_max}&registrovan=${route.query.registrovan}&prvi_vlasnik=${route.query.prvi_vlasnik}&kwMin=${route.query.kwMin}&kwMax=${route.query.kwMax}&kubikazaMin=${route.query.kubikazaMin}&kubikazaMax=${route.query.kubikazaMax}`, {
 
       method: 'GET',
      
@@ -76,7 +83,11 @@ const search=async()=>{
       cena_min: minPrice.value,
       cena_max: maxPrice.value,
       prvi_vlasnik:prviVlasnik.value ? 'true':"",
-      registrovan:registrovan.value ? 'true' : ""
+      registrovan:registrovan.value ? 'true' : "",
+      kwMin:kwMin.value,
+      kwMax:kwMax.value,
+      kubikazaMin:kubikazaMin.value,
+      kubikazaMax:kubikazaMax.value
     }})
    
 }
@@ -87,6 +98,14 @@ const clear=()=>{
     godisteMax.value=""
     minPrice.value=""
     maxPrice.value=""
+    kwMin.value=""
+    kwMax.value=""
+    kubikazaMin.value=""
+    kubikazaMax.value=""
+    godisteError.value=false
+    kwError.value=false
+    kubikazaError.value=false
+    cenaError.value=false
 }
 
 const validateInput = (broj) => {
@@ -115,6 +134,34 @@ const validateInputGod = (broj) => {
   }
  else{
     godisteError.value=false
+ }
+}
+const validateInputKw = (broj) => {
+  // Provera da li je unos van granica
+ if(broj!=""){
+  if(broj<1 || broj>500){
+    kwError.value=true
+    
+ }else{
+    kwError.value=false
+ }
+  }
+ else{
+    kwError.value=false
+ }
+}
+const validateInputKubikaza = (broj) => {
+  // Provera da li je unos van granica
+ if(broj!=""){
+  if(broj<1 || broj>2000){
+    kubikazaError.value=true
+    
+ }else{
+    kubikazaError.value=false
+ }
+  }
+ else{
+    kubikazaError.value=false
  }
 }
 watch(() => route.query, loadResults, { immediate: true })
@@ -160,9 +207,22 @@ watch(() => route.query, loadResults, { immediate: true })
                     <span class="ml-2 text-sm text-gray-700">Prvi vlasnik</span>
                 </label>
                 </div>
+                <div v-if="deteljnaPretragaShow" class="detaljna flex flex-wrap w-full">
+                  <input v-model="kwMin" @input="validateInputKw(kwMin)"  min="1900" max="2024" class="bg-white rounded-md m-2 md:w-1/3 w-full p-1" type="number" placeholder="KW od"/>
+                    <input v-model="kwMax" @input="validateInputKw(kwMax)"  min="1900" max="2024"  class="bg-white rounded-md m-2 md:w-1/3 w-full p-1" type="number" placeholder="Do"/>
+                    <label class="w-full font-semibold text-sm text-yellow-500" v-if="kwError">Kilovati moraju biti izmedju 1 i 500</label>
+                    <div class="max-w-1/2 md:w-full">
+                      <input v-model="kubikazaMin" @input="validateInputKubikaza(kubikazaMin)"  min="1900" max="2024" class="bg-white rounded-md m-2 md:w-1/3 w-full p-1" type="number" placeholder="Kubikaža od"/>
+                      <input v-model="kubikazaMax" @input="validateInputKubikaza(kubikazaMax)"  min="1900" max="2024"  class="bg-white rounded-md m-2 md:w-1/3 w-full p-1" type="number" placeholder="Do"/>
+                      <label class="w-full font-semibold text-sm text-yellow-500" v-if="kubikazaError">Kubikaža mora biti izmedju 1 i 2000</label>
+                    </div>
+
                 </div>
+                </div>
+                <button @click="deteljnaPretragaShow=!deteljnaPretragaShow" class="border-2 mt-2 border-gray-600 bg-gray-200 bg-opacity-40 flex text-black items-center rounded-md md:p-2 p-1 px-2 mx-2" > {{ deteljnaPretragaShow ? 'Sakrij detaljnu pretragu' : 'Detaljna pretraga' }}</button>
+
                <div class="w-full flex justify-start mt-4">
-                <button class="bg-yellow-500 flex text-white items-center rounded-md p-2 mx-2" :disabled="cenaError || godisteError" @click="search()"><i class="bi bi-search text-sm mx-1"></i> Pretraži</button>
+                <button class="bg-yellow-500 flex text-white items-center rounded-md p-2 mx-2" :disabled="cenaError || godisteError || kwError || kubikazaError" @click="search()"><i class="bi bi-search text-sm mx-1"></i> Pretraži</button>
                 <button class="bg-transparent  bg-gray-400 flex items-center rounded-md p-2 mx-2" @click="clear">Poništi pretragu</button>
                </div>
             </div>

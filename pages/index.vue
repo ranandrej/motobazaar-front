@@ -15,10 +15,16 @@ const model=ref("")
 const marka=ref("")
 const godisteMin=ref("")
 const godisteMax=ref("")
+const kwMin=ref('')
+const kwMax=ref('')
+const kubikazaMin=ref('')
+const kubikazaMax=ref('')
 const minPrice=ref("")
 const maxPrice=ref("")
 const cenaError=ref(false)
 const godisteError=ref(false)
+const kwError=ref(false)
+const kubikazaError=ref(false)
 const poruka=ref("")
 const email=ref("")
 const mailSuccess=ref(false)
@@ -27,6 +33,7 @@ const router=useRouter()
 const oglasiCount=ref(0)
 const registrovan=ref(false)
 const prviVlasnik=ref(false)
+const deteljnaPretragaShow=ref(false)
 onMounted(async()=>{
     const route = useRoute()
     const { id } = route.params
@@ -85,12 +92,20 @@ onMounted(async()=>{
 
 
 const clear=()=>{
-    marka.value=""
+  marka.value=""
     model.value=""
     godisteMin.value=""
     godisteMax.value=""
     minPrice.value=""
     maxPrice.value=""
+    kwMin.value=""
+    kwMax.value=""
+    kubikazaMin.value=""
+    kubikazaMax.value=""
+    godisteError.value=false
+    kwError.value=false
+    kubikazaError.value=false
+    cenaError.value=false
 }
 const search = async () => {
   
@@ -104,7 +119,11 @@ const search = async () => {
       cena_min: minPrice.value,
       cena_max: maxPrice.value,
       prvi_vlasnik:prviVlasnik.value ? 'true':"",
-      registrovan:registrovan.value ? 'true' : ""
+      registrovan:registrovan.value ? 'true' : "",
+      kwMin:kwMin.value,
+      kwMax:kwMax.value,
+      kubikazaMin:kubikazaMin.value,
+      kubikazaMax:kubikazaMax.value
     }
   })
 }
@@ -124,16 +143,42 @@ const validateInput = (broj) => {
 }
 const validateInputGod = (broj) => {
   // Provera da li je unos van granica
+  if (broj !== "") {
+    if (broj < 1900 || broj > 2025) {
+      godisteError.value = true;
+    } else {
+      godisteError.value = false;
+    }
+  } else {
+    godisteError.value = false;
+  }
+}
+const validateInputKw = (broj) => {
+  // Provera da li je unos van granica
  if(broj!=""){
-  if(broj<1900 || broj>2025){
-    godisteError.value=true
+  if(broj<1 || broj>500){
+    kwError.value=true
     
- }else[
-    godisteError.value=false
- ]
+ }else{
+    kwError.value=false
+ }
   }
  else{
-    godisteError.value=false
+    kwError.value=false
+ }
+}
+const validateInputKubikaza = (broj) => {
+  // Provera da li je unos van granica
+ if(broj!=""){
+  if(broj<1 || broj>2000){
+    kubikazaError.value=true
+    
+ }else{
+    kubikazaError.value=false
+ }
+  }
+ else{
+    kubikazaError.value=false
  }
 }
 const sendMail=async()=>{
@@ -209,10 +254,26 @@ const sendMail=async()=>{
                     <span class="ml-2 text-sm text-gray-700">Prvi vlasnik</span>
                 </label>
                 </div>
+                <div v-if="deteljnaPretragaShow" class="detaljna flex flex-wrap w-full">
+                  <input v-model="kwMin" @input="validateInputKw(kwMin)"  min="1900" max="2024" class="bg-white rounded-md m-2 md:w-1/3 w-full p-1" type="number" placeholder="Snaga od (KW)"/>
+                    <input v-model="kwMax" @input="validateInputKw(kwMax)"  min="1900" max="2024"  class="bg-white rounded-md m-2 md:w-1/3 w-full p-1" type="number" placeholder="Do"/>
+                    <label class="w-full font-semibold text-sm text-yellow-500" v-if="kwError">Kilovati moraju biti izmedju 1 i 500</label>
+                    <div class="max-w-1/2 md:w-full">
+                      <input v-model="kubikazaMin" @input="validateInputKubikaza(kubikazaMin)"  min="1900" max="2024" class="bg-white rounded-md m-2 md:w-1/3 w-full p-1" type="number" placeholder="Kubikaža od (ccm)"/>
+                      <input v-model="kubikazaMax" @input="validateInputKubikaza(kubikazaMax)"  min="1900" max="2024"  class="bg-white rounded-md m-2 md:w-1/3 w-full p-1" type="number" placeholder="Do"/>
+                      <label class="w-full font-semibold text-sm text-yellow-500" v-if="kubikazaError">Kubikaža mora biti izmedju 1 i 2000</label>
+                    </div>
+
                 </div>
+                </div>
+            <button @click="deteljnaPretragaShow=!deteljnaPretragaShow" class="border-2 mt-2 border-gray-600 bg-gray-200 bg-opacity-40 flex text-black items-center rounded-md md:p-2 p-1 px-2 mx-2" > {{ deteljnaPretragaShow ? 'Sakrij detaljnu pretragu' : 'Detaljna pretraga' }}</button>
                <div class="w-full flex justify-start mt-4">
-                <button class="bg-yellow-500 flex text-white items-center rounded-md p-2 mx-2" :disabled="cenaError || godisteError" @click="search()"><i class="bi bi-search text-sm mx-1"></i> Pretraži</button>
-                <button class="bg-transparent  bg-gray-400 flex items-center rounded-md p-2 mx-2" @click="clear">Poništi pretragu</button>
+               
+                  <button class="bg-yellow-500 flex text-white items-center rounded-md p-2 mx-2" :disabled="cenaError || godisteError || kwError || kubikazaError" @click="search()"><i class="bi bi-search text-sm mx-1"></i> Pretraži</button>
+                  <button class="bg-transparent  bg-gray-400 flex items-center rounded-md p-2 mx-2" @click="clear">Poništi pretragu</button>
+                  
+                <div class="flex"></div>
+
                </div>
             </div>
     </div>
