@@ -18,7 +18,7 @@
         <p class="mb-4">Zadržavamo pravo da u bilo kojem trenutku izmenimo ove uslove korišćenja. Sve promene će biti objavljene na ovoj stranici, a nastavak korišćenja sajta nakon objavljivanja promena znači da ste prihvatili te promene.</p>
   
         <h2 class="text-2xl font-semibold mt-6 mb-3">5. Kontakt</h2>
-        <p class="mb-4">Ako imate bilo kakvih pitanja ili komentara u vezi sa ovim uslovima korišćenja, molimo Vas da nas kontaktirate na e-mail adresu: <a href="mailto:motobaazar@motomax.rs" class="text-blue-600 hover:underline">info@motobazaar.rs</a>.</p>
+        <p class="mb-4">Ako imate bilo kakvih pitanja ili komentara u vezi sa ovim uslovima korišćenja, molimo Vas da nas kontaktirate na e-mail adresu: <a href="mailto:motobaazar@motomax.rs" class="text-blue-600 hover:underline">motobazaar@motomax.rs</a>.</p>
   
         <p class="text-sm text-gray-600 mt-4">Ovaj dokument je poslednji put ažuriran: 06/09/2024</p>
         <NuxtLink class="my-3 text-blue-400 cursor-pointer" to="/register">Nazad na registraciju</NuxtLink>

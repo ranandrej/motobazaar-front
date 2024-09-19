@@ -109,7 +109,7 @@ console.log(useMainStore().currentUser.value)
               <a href="/about" class="hover:underline me-4 md:me-6">About</a>
             </li>
             <li>
-              <a href="#" class="hover:underline me-4 md:me-6"
+              <a href="/uslovi-koriscenja" class="hover:underline me-4 md:me-6"
                 >Privacy Policy</a
               >
             </li>

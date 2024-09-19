@@ -208,11 +208,11 @@ watch(() => route.query, loadResults, { immediate: true })
                 </label>
                 </div>
                 <div v-if="deteljnaPretragaShow" class="detaljna flex flex-wrap w-full">
-                  <input v-model="kwMin" @input="validateInputKw(kwMin)"  min="1900" max="2024" class="bg-white rounded-md m-2 md:w-1/3 w-full p-1" type="number" placeholder="KW od"/>
+                  <input v-model="kwMin" @input="validateInputKw(kwMin)"  min="1900" max="2024" class="bg-white rounded-md m-2 md:w-1/3 w-full p-1" type="number" placeholder="Snaga od (KW)"/>
                     <input v-model="kwMax" @input="validateInputKw(kwMax)"  min="1900" max="2024"  class="bg-white rounded-md m-2 md:w-1/3 w-full p-1" type="number" placeholder="Do"/>
                     <label class="w-full font-semibold text-sm text-yellow-500" v-if="kwError">Kilovati moraju biti izmedju 1 i 500</label>
-                    <div class="max-w-1/2 md:w-full">
-                      <input v-model="kubikazaMin" @input="validateInputKubikaza(kubikazaMin)"  min="1900" max="2024" class="bg-white rounded-md m-2 md:w-1/3 w-full p-1" type="number" placeholder="Kubikaža od"/>
+                    <div class="w-2/3 md:w-full">
+                      <input v-model="kubikazaMin" @input="validateInputKubikaza(kubikazaMin)"  min="1900" max="2024" class="bg-white rounded-md m-2 md:w-1/3 w-full p-1" type="number" placeholder="Kubikaža od (ccm)"/>
                       <input v-model="kubikazaMax" @input="validateInputKubikaza(kubikazaMax)"  min="1900" max="2024"  class="bg-white rounded-md m-2 md:w-1/3 w-full p-1" type="number" placeholder="Do"/>
                       <label class="w-full font-semibold text-sm text-yellow-500" v-if="kubikazaError">Kubikaža mora biti izmedju 1 i 2000</label>
                     </div>
@@ -241,7 +241,7 @@ watch(() => route.query, loadResults, { immediate: true })
       <div class="flex flex-wrap w-full justify-start md:p-3 p-0 my-2 " v-if="oglasi.length>0">
       
           <h2 class="text-xl mx-3 w-full font-light text-black">Rezultati pretrage - <span class="text-xs font-semibold">pronađeno {{ oglasi.length }} oglasa</span></h2>
-            <NuxtLink v-for="oglas in oglasi" :key="oglas.id" :to="`/oglas/motocikli/${oglas.id}`" class="md:w-[45%] cursor-pointer mx-4  my-4 flex rounded-md bg-white justify-start md:h-56 h-46">
+            <NuxtLink v-for="oglas in oglasi" :key="oglas.id" :to="`/oglas/motocikli/${oglas.id}`" class="md:w-[45%] w-full cursor-pointer md:mx-4  my-4 flex rounded-md bg-white justify-start md:h-56 h-46">
               <div class="slika h-full m-0 md:w-[50%] w-[70%]">
                 <img :src="oglas.slikaPaths[0]" class="h-full w-full">
               </div>
