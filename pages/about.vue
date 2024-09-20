@@ -15,9 +15,9 @@
             <h2 class="text-3xl font-bold mb-4">Ko smo mi?</h2>
             <p class="text-lg text-gray-700 leading-relaxed">
               MotoBazaar je inovativni start-up namenjen svim ljubiteljima motocikala. Naša misija
-              je da pružimo jednostavan i brz način za postavljanje oglasa za prodaju ili kupovinu
+              je da pružimo jednostavan i brz način za postavljanje oglasa za prodaju 
               motocikala. Bilo da ste u potrazi za novim motorom ili želite da prodate stari, naš
-              sajt vam omogućava da brzo i efikasno pronađete ono što tražite.
+              sajt vam omogućava da brzo i efikasno pronađete ono što tražite.Naša ideja je da stvorimo jedinstvenu platformu isključivo za motocikle,gde će oni biti u prvom planu.
             </p>
           </div>
           <div class="w-full md:w-1/2">
@@ -30,26 +30,26 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="p-4 bg-gray-50 rounded-lg shadow-sm">
               <h3 class="text-xl font-semibold mb-2">Postavite Oglas</h3>
-              <p class="text-gray-600">
-                Podelite svoj oglas sa potencijalnim kupcima. Proces je brz i jednostavan
+              <p class="text-gray-600 mb-3">
+                Registrujte se i besplatno podelite svoj oglas sa potencijalnim kupcima. Proces je brz i jednostavan
                 - samo unesite informacije o svom motociklu, dodajte slike, i vaš oglas je spreman!
               </p>
+              <NuxtLink class=" p-2 bg-transparent border-2 border-yellow-500 cursor-pointer" to="/register">Registruj se</NuxtLink>
+
             </div>
             <div class="p-4 bg-gray-50 rounded-lg shadow-sm">
               <h3 class="text-xl font-semibold mb-2">Pretražite Oglase</h3>
-              <p class="text-gray-600">
+              <p class="text-gray-600 mb-3">
                 Pretražujte oglase koristeći napredne filtere. Nađite motocikl koji savršeno
                 odgovara vašim potrebama, od klasičnih modela do najnovijih sportskih mašina.
               </p>
+              <NuxtLink class=" p-2 bg-transparent border-2 border-yellow-500 cursor-pointer" to="/">Gledaj Oglase</NuxtLink>
+
             </div>
           </div>
         </div>
 
-        <div class="text-center mt-12">
-          <a href="/" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Pogledajte Najnovije Oglase
-          </a>
-        </div>
+      
       </div>
     </div>
   </div>

@@ -219,7 +219,7 @@ watch(() => route.query, loadResults, { immediate: true })
 
                 </div>
                 </div>
-                <button @click="deteljnaPretragaShow=!deteljnaPretragaShow" class="border-2 mt-2 border-gray-600 bg-gray-200 bg-opacity-40 flex text-black items-center rounded-md md:p-2 p-1 px-2 mx-2" > {{ deteljnaPretragaShow ? 'Sakrij detaljnu pretragu' : 'Detaljna pretraga' }}</button>
+                <button @click="deteljnaPretragaShow=!deteljnaPretragaShow" class="mt-2 bg-gray-500 bg-opacity-40 flex text-gray-100 items-center rounded-md text-xs p-2  mx-2" > {{ deteljnaPretragaShow ? 'Sakrij detaljnu pretragu' : 'Detaljna pretraga' }}</button>
 
                <div class="w-full flex justify-start mt-4">
                 <button class="bg-yellow-500 flex text-white items-center rounded-md p-2 mx-2" :disabled="cenaError || godisteError || kwError || kubikazaError" @click="search()"><i class="bi bi-search text-sm mx-1"></i> Pretraži</button>
