@@ -215,12 +215,12 @@
         </div>
         <!-- Opis -->
         <div>
-          <label class="block text-sm font-medium text-gray-700">Dodatna oprema</label>
+          <label class="block text-sm font-medium text-gray-700">Dodatna oprema <span class="text-sm">(Opciono)</span></label>
           <textarea
             name="dodatna_oprema"
             rows="4"
             class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
-            required
+            
           ></textarea>
         </div>
         <div>
@@ -324,7 +324,9 @@ const handleSubmit = async (event) => {
   const isRegistered = formData.get('registrovan') ? true : false;
   formData.set('prvi_vlasnik', isFirstOwner);
   formData.set('registrovan', isRegistered);
-
+  if (!formData.get('dodatna_oprema')?.trim()) {
+  formData.set('dodatna_oprema', 'Nema.');
+}
   loading.value = true;
 
   try {
