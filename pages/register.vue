@@ -138,7 +138,7 @@ async function signUp() {
             Prihvatam
             <NuxtLink to="/uslovi-koriscenja" class="text-yellow-500 hover:text-yellow-400">
               uslove korišćenja
-            </NuxtLink>
+            </NuxtLink>,i potvrđujem da sam lice koje ja navršilo 15 godina starosti.
           </label>
         </div>
 
