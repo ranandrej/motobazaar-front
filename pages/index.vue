@@ -292,7 +292,9 @@ const sendMail=async()=>{
      :slika="'https://ejcrowqjfiedgnebyxmr.supabase.co/storage/v1/object/public/Baneri/baner%20br1.jpg?t=2024-09-09T11%3A36%3A22.264Z'"
       alt="Moto max banner"/>
       <h1 class="text-2xl my-2 mx-3 font-semibold">Poslednje dodati oglasi </h1>
-      <MotoriSlide :oglasi="oglasi"/>
+      
+        <MotoriSlide  :oglasi="oglasi"/>
+     
     </div>
     
     <div class="md:p-10 p-4 w-full bg-gray-50 min-h-full flex flex-wrap justify-center">

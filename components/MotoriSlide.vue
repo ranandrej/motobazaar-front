@@ -21,12 +21,12 @@ return formatDate
 </script>
 
 <template>
-    <Swiper class="md:max-w-[90%] w-[90%] h-full" style="--swiper-navigation-color: yellow;"
+    <Swiper  class="md:max-w-[90%] w-[90%]" style="--swiper-navigation-color: yellow;height: 400px;"
   
     
       :modules="[SwiperController,SwiperFreeMode,SwiperNavigation]"
       :slides-per-view="1"
-      :space-between="80"
+      :space-between="40"
       :navigation="true"
       :loop="true"
       :free-mode="true"
@@ -60,20 +60,23 @@ return formatDate
       
       
     >
-      <SwiperSlide style="height: auto;" v-for="oglas in props.oglasi" class="bg-white shadow-md mb-2 p-0 rounded-md cursor-pointer mt-4 w-80 max-h-[400px] overflow-hidden">
+      <SwiperSlide style="height: auto;" v-for="oglas in props.oglasi" class="bg-white shadow-md mb-2 p-0 rounded-md cursor-pointer mt-4  overflow-hidden">
         <NuxtLink :to="`/oglas/motocikli/${oglas.id}`" class="h-full">
-              <div class="w-full m-0 h-[70%]">
+              <div class="w-full m-0 h-[60%]">
                 <img  :src="oglas.slikaPaths[0]" class="mx-auto w-full h-full">
                
 
               </div>
-              <div class="px-3 flex flex-wrap h-[30%] bg-gradient-to-r from-yellow-50 to-yellow-200" >
-                <h2 class="text-normal text-xl text-black font-semibold w-full">{{ oglas.marka }} {{ oglas.model }}</h2>
-                <p class="w-full text-sm text-gray-400 font-bold">{{ oglas.godiste }}.god.</p>
-                <p class="w-full text-sm text-gray-600"><i class="bi bi-geo-alt-fill"></i> {{ oglas.mesto }}</p>
-                <div class="px-1">
-                <p class="text-black text-sm font-semibold">{{ oglas.cena.toLocaleString('de-DE')}}€</p>
-              </div>
+              <div class="px-3 flex flex-wrap h-[40%]  bg-gradient-to-r from-yellow-50 to-yellow-200" >
+                <h2 class="text-normal md:text-lg text-xl text-black font-semibold w-full">{{ oglas.marka }} {{ oglas.model }}</h2>
+
+                <div class=" h-[65%] space-y-4">
+                  <p class="w-full md:text-sm  text-gray-400 font-bold">{{ oglas.godiste }}.god.</p>
+                  <p class="w-full md:text-sm text-gray-600"><i class="bi bi-geo-alt-fill"></i> {{ oglas.mesto }}</p>
+                  <div class="px-1">
+                  <p class="text-black md:text-md text-lg font-semibold">{{ oglas.cena.toLocaleString('de-DE')}}€</p>
+                  </div>
+                </div>
               </div>
               
             </NuxtLink>
