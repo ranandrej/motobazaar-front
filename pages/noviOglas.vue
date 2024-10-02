@@ -7,7 +7,7 @@
       <form id="motociklForm" @submit.prevent="handleSubmit" class="max-h-100 p-5">
         <!-- Marka -->
         <div>
-          <label class="block text-sm font-medium text-gray-700">Marka</label>
+          <label class="block text-sm font-medium text-gray-700">Marka*</label>
          <select required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm" id="brand" name="marka" placeholder="Sve marke" tabindex="-1">
          <option value="" >Marka</option>
           <option value="Access Motor">Access Motor</option>
@@ -112,7 +112,7 @@
           </div>
         <!-- Model -->
         <div>
-          <label class="block text-sm font-medium text-gray-700">Model</label>
+          <label class="block text-sm font-medium text-gray-700">Model*</label>
           <input
             type="text"
             name="model"
@@ -123,7 +123,7 @@
         </div>
         <!-- Godiste -->
         <div>
-          <label class="block text-sm font-medium text-gray-700">Godište</label>
+          <label class="block text-sm font-medium text-gray-700">Godište*</label>
           <input
             type="number"
             name="godiste"
@@ -135,7 +135,7 @@
           />
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700">Kubikaža</label>
+          <label class="block text-sm font-medium text-gray-700">Kubikaža*</label>
           <input
             type="number"
             name="kubikaza"
@@ -147,7 +147,7 @@
           />
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700">Snaga (kW)</label>
+          <label class="block text-sm font-medium text-gray-700">Snaga (kW)*</label>
           <input
             type="number"
             name="snaga"
@@ -160,7 +160,7 @@
         </div>
         <!-- Cena -->
         <div>
-          <label class="block text-sm font-medium text-gray-700">Cena (€)</label>
+          <label class="block text-sm font-medium text-gray-700">Cena (€)*</label>
           <input
             type="number"
             name="cena"
@@ -172,7 +172,7 @@
         </div>
         <!-- Kilometraza -->
         <div>
-          <label class="block text-sm font-medium text-gray-700">Kilometraža</label>
+          <label class="block text-sm font-medium text-gray-700">Kilometraža*</label>
           <input
             type="number"
             name="kilometraza"
@@ -184,14 +184,17 @@
         </div>
         <!-- Mesto -->
         <div>
-          <label class="block text-sm font-medium text-gray-700">Mesto</label>
-          <input
+          <label class="block text-sm font-medium text-gray-700">Mesto*</label>
+          <select
             type="text"
             name="mesto"
             class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
             required
-            maxlength="30"
-          />
+            
+          >
+          <option value="">Izaberite Mesto</option>
+          <option v-for="grad in gradovi" :value="grad.city">{{ grad.city }}</option>
+        </select>
         </div>
         <div class="my-4">
           <label class="flex items-center">
@@ -224,7 +227,7 @@
           ></textarea>
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700">Opis</label>
+          <label class="block text-sm font-medium text-gray-700">Opis*</label>
           <textarea
             name="opis"
             rows="4"
@@ -273,6 +276,7 @@
 import { useRuntimeConfig } from '#app'
 import { ref,onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import gradovi from "../assets/srbija-svi-gradovi.json"
 import EXIF from 'exif-js'
 
 const successPost=ref(false)

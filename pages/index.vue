@@ -3,6 +3,7 @@ import { onMounted } from 'vue';
 import { useRoute } from '#app';
 import { useRuntimeConfig } from '#app'
 import { useRouter } from 'vue-router'
+import gradovi from "../assets/srbija-svi-gradovi.json"
 const config=useRuntimeConfig()
 
 const oglasi = ref([])
@@ -19,6 +20,7 @@ const kwMin=ref('')
 const kwMax=ref('')
 const kubikazaMin=ref('')
 const kubikazaMax=ref('')
+const grad=ref('')
 const minPrice=ref("")
 const maxPrice=ref("")
 const cenaError=ref(false)
@@ -106,6 +108,7 @@ const clear=()=>{
     kwError.value=false
     kubikazaError.value=false
     cenaError.value=false
+    grad.value=""
 }
 const search = async () => {
   
@@ -123,7 +126,8 @@ const search = async () => {
       kwMin:kwMin.value,
       kwMax:kwMax.value,
       kubikazaMin:kubikazaMin.value,
-      kubikazaMax:kubikazaMax.value
+      kubikazaMax:kubikazaMax.value,
+      grad:grad.value
     }
   })
 }
@@ -262,6 +266,11 @@ const sendMail=async()=>{
                       <input v-model="kubikazaMin" @input="validateInputKubikaza(kubikazaMin)"  min="1900" max="2024" class="bg-white rounded-md m-2 md:w-1/3 w-full p-1" type="number" placeholder="Kubikaža od (ccm)"/>
                       <input v-model="kubikazaMax" @input="validateInputKubikaza(kubikazaMax)"  min="1900" max="2024"  class="bg-white rounded-md m-2 md:w-1/3 w-full p-1" type="number" placeholder="Do"/>
                       <label class="w-full font-semibold text-sm text-yellow-500" v-if="kubikazaError">Kubikaža mora biti izmedju 1 i 2000</label>
+                      <select v-model="grad"  name="grad"  class="bg-white rounded-md m-2 md:w-1/3 w-full p-1">
+                        <option value="" disabled>Mesto</option>
+                        <option v-for="grad in gradovi" :value="grad.city">{{ grad.city }}</option>
+                      </select>
+
                     </div>
 
                 </div>

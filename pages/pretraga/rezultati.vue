@@ -3,7 +3,7 @@ import { useRoute } from '#app';
 import { onMounted,ref,watch } from 'vue';
 import { useRuntimeConfig } from '#app';
 import { useRouter } from '#app';
-
+import gradovi from "~/assets/srbija-svi-gradovi.json"
 const config=useRuntimeConfig()
 const route=useRoute()
 const loading=ref(false)
@@ -17,6 +17,7 @@ const godisteMin=ref("")
 const godisteMax=ref("")
 const minPrice=ref("")
 const maxPrice=ref("")
+const grad=ref('')
 const cenaError=ref(false)
 const godisteError=ref(false)
 const router=useRouter()
@@ -36,7 +37,7 @@ const loadResults=async()=>{
     
     const { id } = route.params
     loading.value=true
-    const data = await $fetch(`${config.public.apiUrl}/api/searchMotocikli/?marka=${route.query.marka}&model=${route.query.model}&godiste_min=${route.query.godisteMin}&godiste_max=${route.query.godisteMax}&cena_min=${route.query.cena_min}&cena_max=${route.query.cena_max}&registrovan=${route.query.registrovan}&prvi_vlasnik=${route.query.prvi_vlasnik}&kwMin=${route.query.kwMin}&kwMax=${route.query.kwMax}&kubikazaMin=${route.query.kubikazaMin}&kubikazaMax=${route.query.kubikazaMax}`, {
+    const data = await $fetch(`${config.public.apiUrl}/api/searchMotocikli/?marka=${route.query.marka}&model=${route.query.model}&godiste_min=${route.query.godisteMin}&godiste_max=${route.query.godisteMax}&cena_min=${route.query.cena_min}&cena_max=${route.query.cena_max}&registrovan=${route.query.registrovan}&prvi_vlasnik=${route.query.prvi_vlasnik}&kwMin=${route.query.kwMin}&kwMax=${route.query.kwMax}&kubikazaMin=${route.query.kubikazaMin}&kubikazaMax=${route.query.kubikazaMax}&grad=${route.query.grad}`, {
       method: 'GET',
      
      
@@ -62,7 +63,7 @@ const fetchPage=async(page)=>{
         top: 0,
         behavior: 'smooth'
      })
-     const data = await $fetch(`${config.public.apiUrl}/api/searchMotocikli/?page=${page}&marka=${route.query.marka}&model=${route.query.model}&godiste_min=${route.query.godisteMin}&godiste_max=${route.query.godisteMax}&cena_min=${route.query.cena_min}&cena_max=${route.query.cena_max}&registrovan=${route.query.registrovan}&prvi_vlasnik=${route.query.prvi_vlasnik}&kwMin=${route.query.kwMin}&kwMax=${route.query.kwMax}&kubikazaMin=${route.query.kubikazaMin}&kubikazaMax=${route.query.kubikazaMax}`, {
+     const data = await $fetch(`${config.public.apiUrl}/api/searchMotocikli/?page=${page}&marka=${route.query.marka}&model=${route.query.model}&godiste_min=${route.query.godisteMin}&godiste_max=${route.query.godisteMax}&cena_min=${route.query.cena_min}&cena_max=${route.query.cena_max}&registrovan=${route.query.registrovan}&prvi_vlasnik=${route.query.prvi_vlasnik}&kwMin=${route.query.kwMin}&kwMax=${route.query.kwMax}&kubikazaMin=${route.query.kubikazaMin}&kubikazaMax=${route.query.kubikazaMax}&grad=${route.query.grad}`, {
 
       method: 'GET',
      
@@ -87,7 +88,8 @@ const search=async()=>{
       kwMin:kwMin.value,
       kwMax:kwMax.value,
       kubikazaMin:kubikazaMin.value,
-      kubikazaMax:kubikazaMax.value
+      kubikazaMax:kubikazaMax.value,
+      grad:grad.value
     }})
    
 }
@@ -105,7 +107,8 @@ const clear=()=>{
     godisteError.value=false
     kwError.value=false
     kubikazaError.value=false
-    cenaError.value=false
+    cenaError.value=false,
+    grad.value=""
 }
 
 const validateInput = (broj) => {
@@ -215,6 +218,10 @@ watch(() => route.query, loadResults, { immediate: true })
                       <input v-model="kubikazaMin" @input="validateInputKubikaza(kubikazaMin)"  min="1900" max="2024" class="bg-white rounded-md m-2 md:w-1/3 w-full p-1" type="number" placeholder="Kubikaža od (ccm)"/>
                       <input v-model="kubikazaMax" @input="validateInputKubikaza(kubikazaMax)"  min="1900" max="2024"  class="bg-white rounded-md m-2 md:w-1/3 w-full p-1" type="number" placeholder="Do"/>
                       <label class="w-full font-semibold text-sm text-yellow-500" v-if="kubikazaError">Kubikaža mora biti izmedju 1 i 2000</label>
+                      <select v-model="grad"  name="grad"  class="bg-white rounded-md m-2 md:w-1/3 w-full p-1">
+                        <option value="" disabled>Mesto</option>
+                        <option v-for="grad in gradovi" :value="grad.city">{{ grad.city }}</option>
+                      </select>
                     </div>
 
                 </div>
