@@ -257,6 +257,17 @@
         </button>
       </div>
     </div>
+    <div class="my-4">
+          <label class="flex items-center">
+            <input
+            required
+              type="checkbox"
+              name="saglasnost1"
+              class="form-checkbox h-4 w-4 text-yellow-500 transition duration-150 ease-in-out"
+            />
+            <span class="ml-2 md:text-sm text-xs font-semibold text-gray-700">Kao vlasnik odnosno korisnik svih neophodnih autorskih prava na fotografijama koje u svojstvu oglašivača postavim na sajtu moto-bazaar.com, dajem saglasnost da Moto Bazaar ima pravo da bez ikakve naknade iste koristi kao i da ih podeli na svoje društvene mreže zarad efikasnije prodaje.</span>
+          </label>
+        </div>
         </div>
         <!-- Submit Button -->
         <div class="flex justify-end">
