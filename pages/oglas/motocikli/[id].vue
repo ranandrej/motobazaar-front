@@ -50,6 +50,7 @@ onMounted(async()=>{
     loading.value=false
     
     oglas.value=data
+    oglas.value.cena=oglas.value.cena.toLocaleString('de-DE')
     const user = await $fetch(`${config.public.apiUrl}/api/getUser/?id=${data.user}`, {
       method: 'GET',
      
@@ -174,7 +175,7 @@ const motociklUrl = useRequestURL().href
                         <p class="w-full font-semibold" v-if="oglas.registrovan"><span class="font-normal">Registrovan:</span> Da</p>
                     </div>
                     <div class="mx-2 md:p-4 space-y-1">
-                        <p class="w-full font-semibold"><span class="font-normal">Kubikaža: </span>{{ oglas.kubikaza }} ccm3</p>
+                        <p class="w-full font-semibold"><span class="font-normal">Kubikaža: </span>{{ oglas.kubikaza }} cm3</p>
                         <hr>
                         <p class="w-full font-semibold"><span class="font-normal">Snaga Motora: </span>{{ oglas.snaga }} kW</p>
                         <hr>

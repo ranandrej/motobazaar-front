@@ -135,7 +135,7 @@
           />
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700">Kubikaža*</label>
+          <label class="block text-sm font-medium text-gray-700">Kubikaža (cm3)*</label>
           <input
             type="number"
             name="kubikaza"
