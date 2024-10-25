@@ -17,6 +17,7 @@ const isLikeDisabled = ref(false); // Praćenje da li je dugme onemogućeno
 const currentIndex=ref(0)
 const lastScrollTop = ref(0);
 const isScrollingDown = ref(false);
+
 onMounted(async()=>{
    
   window.addEventListener('scroll', () => {
@@ -59,6 +60,17 @@ onMounted(async()=>{
     prodavac.value=user
     mainImagePath.value=oglas.value.slikaPaths[0]
     currentIndex.value=0
+})
+useHead({
+  title: oglas.value.marka + ' ' +oglas.value.model,
+  meta: [
+    { property: 'og:title', content: oglas.value.marka + ' ' +oglas.value.model },
+    { property: 'og:description', content: oglas.value.godiste + 'godište' + oglas.value.kubikaza +'cm3' },
+    { property: 'og:image', content: oglas.value.slikaPaths[0] },
+    
+    
+    { name: 'description', content: oglas.value.opis }
+  ]
 })
 const changeMainImage=(img,index)=>{
     

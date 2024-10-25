@@ -20,11 +20,15 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'Moto|Bazaar', // Default naslov stranice
+      title: 'Moto|Bazaar - Oglasi za polovne motocikle', // Default naslov stranice
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { hid: 'description', name: 'description', content: 'My Nuxt.js application.' }
+        { name: 'description', content: 'Prvi oglasi isključivo za motocikle u Srbiji. Pronađite savršeni motocikl ili besplatno oglasite prodaju svog uz MotoBazaar!' },
+        { property: 'og:title', content: 'MotoBazaar - Oglasi za polovne motocikle' },
+        { property: 'og:description', content: 'Najbolje mesto za kupovinu i prodaju motocikala u Srbiji.' },
+        { property: 'og:image', content: 'https://example.com/path-do-defaultne-slike.jpg' },
+        { property: 'og:url', content: 'https://motobazaar.com' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/Logo.png' } ,
