@@ -60,8 +60,7 @@ onMounted(async()=>{
     prodavac.value=user
     mainImagePath.value=oglas.value.slikaPaths[0]
     currentIndex.value=0
-})
-useHead({
+    useHead({
   title: oglas.value.marka + ' ' +oglas.value.model,
   meta: [
     { property: 'og:title', content: oglas.value.marka + ' ' +oglas.value.model },
@@ -72,6 +71,8 @@ useHead({
     { name: 'description', content: oglas.value.opis }
   ]
 })
+})
+
 const changeMainImage=(img,index)=>{
     
     mainImagePath.value=img
