@@ -36,7 +36,22 @@ const oglasiCount=ref(0)
 const registrovan=ref(false)
 const prviVlasnik=ref(false)
 const deteljnaPretragaShow=ref(false)
+const isScrollingDown = ref(false);
+const lastScrollTop = ref(0);
+
 onMounted(async()=>{
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+
+    // Check if scrolling down
+    if (scrollTop > lastScrollTop.value) {
+      isScrollingDown.value = true;
+    } else {
+      isScrollingDown.value = false;
+    }
+
+    lastScrollTop.value = scrollTop;
+  })
     const route = useRoute()
     const { id } = route.params
     loading.value=true
@@ -372,24 +387,60 @@ const sendMail=async()=>{
         </form>
         
     </div>
+    <div class="relative">
+    <!-- Ostatak stranice -->
+
+    <!-- Sticky dugme -->
+    <div class="fixed z-50 bottom-0 left-0 w-full p-4 bg-transparent md:hidden transition-transform duration-1000 ease-in-out" :class="{ 'translate-y-full': isScrollingDown }"
+   >
+         <NuxtLink
+        to="/noviOglas"
+        class="flex items-center justify-center w-full text-white bg-yellow-500 font-bold py-3 "
+      >
+      + Postavi oglas
+         </NuxtLink>
+     
+      
+    </div>
+  </div>
 </template>
 <style scoped>
+.translate-y-full {
+  transform: translateY(100%);
+}
 
-
-.slogan {
+.fade-in {
   opacity: 0;
-  animation: fadeInOut 8s infinite;
-  
+  animation: fadeIn 0.5s forwards; /* 0.5s duration of the animation */
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes moveText {
   0% {
-    transform: translateX(-200%) ;
+    transform: translateX(-200%);
   }
   100% {
-    transform: translateX(300%) ;
+    transform: translateX(300%);
   }
 }
 
+/* Define the fadeInOut animation */
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
 
+.slogan {
+  opacity: 0;
+  animation: fadeInOut 8s infinite;
+}
 </style>

@@ -61,6 +61,7 @@ onMounted(async()=>{
     currentIndex.value=0
 })
 const changeMainImage=(img,index)=>{
+    
     mainImagePath.value=img
     currentIndex.value=index
 }
@@ -128,8 +129,11 @@ const motociklUrl = useRequestURL().href
 
     <hr>
     <div class="flex w-full p-3">
-        <NuxtLink class="text-blue-700 flex items-center" to="/"><i class="bi bi-house"></i> Početna/Oglasi/</NuxtLink>
-        <NuxtLink class="text-blue-700 " to="#">{{oglas.marka}} {{ oglas.model }}/</NuxtLink>
+      <div class="flex h-11 w-full md:p-3">
+          <NuxtLink class="text-yellow-500 flex items-center" to="/"><i class="bi bi-house mx-1 text-lg"></i> Početna/Oglasi/ </NuxtLink>
+          <NuxtLink class="text-white flex items-center ml-1" to="#"> {{oglas.marka}} {{ oglas.model }}</NuxtLink>
+      </div>
+       
         
     </div>
     <hr>
@@ -138,13 +142,13 @@ const motociklUrl = useRequestURL().href
         <div class="md:w-1/2 w-full">
             <div class="flex  relative">
                 <button @click="changeImage('prev')" class="bg-transparent text-yellow-500 font-thin  z-49  md:top-1/2 top-1/2 absolute cursor-pointer"> <i class="bi bi-chevron-left md:text-5xl text-3xl"></i> </button>
-                <a class="w-full" :href="mainImagePath"><img :src="mainImagePath" alt="" class="w-full cursor-pointer sm:max-h-96 mr-5"></a>
+                <a class="w-full" :href="mainImagePath"><img :src="mainImagePath" alt="" class="w-full cursor-pointer sm:max-h-96 mr-5 object-cover"></a>
                 <button @click="changeImage('next')" class="bg-transparent text-yellow-500 font-thin right-0 z-49  md:top-1/2 top-1/2 absolute cursor-pointer"> <i class="bi bi-chevron-right md:text-5xl text-3xl"></i> </button>
 
             </div>
-            <div class="flex p-2 w-full justify-start">
+            <div class="flex flex-wrap p-2 w-full justify-start">
                
-                <img  v-for="path,index in oglas.slikaPaths" :src="path" alt="" @click="changeMainImage(path,index)" class="md:w-1/4 max-h-16 md:max-h-28 mx-2 rounded-md cursor-pointer">
+                <img  v-for="path,index in oglas.slikaPaths" :src="path" alt="" @click="changeMainImage(path,index)"  :class="currentIndex === index ? 'border-2 border-yellow-500' : '' " class="md:w-1/4 max-h-16 mb-2 md:max-h-28 mx-2 rounded-md cursor-pointer">
             </div>
             <div class="flex w-full flex-wrap justify-start">
                 <button :disabled="isLikeDisabled" @click="dodajuOmiljene()" class="flex text-sm md:text-lg bg-transparent text-gray-500 items-center md:w-1/3 m-1"><i :class="isLikeDisabled ? 'text-red-500' : 'text-gray-500'" class="bi bi-heart-fill md:text-xl mx-1 text-lg" ></i>{{ oglas.broj_omiljenih }} Dodaj u omiljene</button>

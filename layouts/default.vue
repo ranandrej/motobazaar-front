@@ -64,9 +64,9 @@ console.log(useMainStore().currentUser.value)
           </NuxtLink>
           <NuxtLink to="/noviOglas"
             class="bg-transparent border-2 border-yellow-500 mx-1 text-white cursor-pointer p-2"
-            v-if="Object.keys(store.currentUser).length > 0"
+          
           >
-            Postavite Oglas
+           + Postavite Oglas
           </NuxtLink>
         </div>
         <div class="sm:hidden flex p-2 m-0 justify-start items-center">

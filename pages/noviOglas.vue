@@ -148,7 +148,8 @@
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700">Snaga (kW)*</label>
-          <input
+          <p class="text-gray-800 text-xs">*Decimalne vrednosti odvojiti sa tačkom( . ) </p>
+          <input 
             type="number"
             name="snaga"
             min="1"
@@ -287,9 +288,16 @@
 import { useRuntimeConfig } from '#app'
 import { ref,onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useMainStore } from '#imports'
 import gradovi from "../assets/srbija-svi-gradovi.json"
 import EXIF from 'exif-js'
 
+onMounted(()=>{
+  console.log()
+  if(useMainStore().currentUser.id==undefined){
+    useRouter().push('/login')
+  }
+})
 const successPost=ref(false)
 const fetchWithAuth=useNuxtApp().$fetchWithAuth
 const formRef = ref(null)
