@@ -64,7 +64,7 @@ onMounted(async()=>{
   title: ()=>oglas.value.marka + ' ' +oglas.value.model,
   
     ogTitle:()=> oglas.value.marka + ' ' +oglas.value.model ,
-    ogDescription:()=> oglas.value.godiste + 'godište' + oglas.value.kubikaza +'cm3' ,
+    ogDescription:()=> oglas.value.godiste + ' '+ 'godište' + ' ' + oglas.value.kubikaza +'cm3' ,
     ogImageUrl:()=>oglas.value.slikaPaths[0] 
     
     
